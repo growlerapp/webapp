@@ -1,0 +1,25 @@
+{
+  "name": "GrowlerApp",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "components": "^0.1.0",
+    "eslint": "^4.19.1",
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.0",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^1.0.0",
+    "eslint-plugin-vue": "^4.4.0",
+    "vue-template-compiler": "^2.5.16"
+  }
+}
