@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rm -rf .cache && parcel index.html",
+    "start": "node_modules/parcel-bundler/bin/cli.js index.html",
     "build": "rm -rf .cache && rm -rf dis && parcel build index.html"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.0.0",
     "eslint-plugin-vue": "^4.4.0",
+    "parcel-bundler": "^1.7.0",
     "postcss-import": "^11.1.0",
     "postcss-url": "^7.3.2",
     "vue-template-compiler": "^2.5.16"
