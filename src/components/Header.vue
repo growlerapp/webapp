@@ -26,6 +26,7 @@ export default {
   height: 60px;
   background-color: var(--color-black);
   color: var(--color-white);
+  font-family: var(--font-family-primary);
 }
 
 .Header-body {
