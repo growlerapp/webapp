@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "rm -rf .cache && parcel index.html",
+    "build": "rm -rf .cache && rm -rf dis && parcel build index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^8.2.0",
     "components": "^0.1.0",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-modules": "^1.1.0",
     "vue": "^2.5.16",
     "vue-hot-reload-api": "^2.3.0",
     "vue-router": "^3.0.1"
@@ -20,6 +24,8 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.0.0",
     "eslint-plugin-vue": "^4.4.0",
+    "postcss-import": "^11.1.0",
+    "postcss-url": "^7.3.2",
     "vue-template-compiler": "^2.5.16"
   }
 }
