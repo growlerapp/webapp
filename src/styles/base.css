@@ -5,8 +5,9 @@ body {
 }
 
 body {
-  font: 14px 'Amatic SC', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
+  font-size: 14px;
+  font-family: var(--font-family-normal);
+  line-height: 1;
   background: #f3f5e3;
   color: #2c332d;
   margin: 0 auto;
@@ -28,6 +29,12 @@ button {
   appearance: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-primary);
 }
 
 :focus {
