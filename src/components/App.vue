@@ -1,68 +1,30 @@
 <template>
   <div class="App">
-  	<h1>GrowlerApp</h1>
-  	
-    <Footer />
+    <Header />
+
+    <div class="App-body">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Footer from './Footer'
+import Header from '~/src/components/Header'
 
 export default {
   name: 'App',
 
-  data: () => ({
-    date: null,
-    deg: 0,
-  }),
-
   components: {
-    Footer,
+    Header,
   },
 }
 </script>
 
 <style>
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
+@import '~/src/styles/base.css';
 
-button {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: none;
-	font-size: 100%;
-	vertical-align: baseline;
-	font-family: inherit;
-	font-weight: inherit;
-	color: inherit;
-	-webkit-appearance: none;
-	appearance: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	line-height: 1.4em;
-	background: #f5f5f5;
-	color: #4d4d4d;
-	min-width: 230px;
-	max-width: 550px;
-	margin: 0 auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-:focus {
-	outline: 0;
-}
-
-.hidden {
-	display: none;
+.App-body {
+  padding: 20px;
+  margin-top: 60px;
 }
 </style>
