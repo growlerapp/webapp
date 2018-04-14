@@ -1,7 +1,9 @@
 <template>
   <div class="Header">
     <div class="Header-body">
-      Growler App
+      <router-link to="/">
+        Growler App
+      </router-link>
     </div>
   </div>
 </template>
@@ -27,6 +29,10 @@ export default {
   background-color: var(--color-black);
   color: var(--color-white);
   font-family: var(--font-family-primary);
+}
+
+.Header a {
+  color: var(--color-white);
 }
 
 .Header-body {

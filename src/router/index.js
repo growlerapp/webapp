@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '~/src/components/Home'
 import About from '~/src/components/About'
 import Splash from '~/src/components/Splash'
+import Store from '~/src/components/Store'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/splash',
       name: 'Splash',
       component: Splash,
+    },
+    {
+      path: '/store/:id',
+      name: 'Store',
+      component: Store,
     },
   ],
 })
