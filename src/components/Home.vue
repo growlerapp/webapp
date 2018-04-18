@@ -40,7 +40,7 @@ export default {
 
 <style>
 .Home-title {
-  color: var(--color-blue);
+  color: var(--color-black);
   font-size: 2rem;
   text-align: center;
   margin-top: 0;
