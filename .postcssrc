@@ -10,7 +10,7 @@
             "color-blue": "#67bcf2",
             "color-yellow": "#eaa74c",
             "font-family-primary": "'Amatic SC', Helvetica, Arial, sans-serif",
-            "font-family-normal": "Helvetica, Arial, sans-serif",
+            "font-family-normal": "'Open Sans', sans-serif"
           }
         }
       }
