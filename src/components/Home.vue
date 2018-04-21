@@ -2,7 +2,7 @@
   <div class="Home">
     <Onboarding v-if="isFirstLaunch"/>
 
-    <div class="Home-body">
+    <div class="Home-body" v-if="stores">
       <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
 
       <StoreItem
@@ -19,7 +19,7 @@
 <script>
 import Onboarding from './Onboarding'
 import StoreItem from './StoreItem'
-import stores from '~/src/store/fake'
+import STORES_ALL from '~/src/graphql/StoresAll.graphql'
 
 export default {
   name: 'Home',
@@ -31,10 +31,17 @@ export default {
 
   data: () => ({
     isFirstLaunch: false,
-    stores: stores,
+    stores: null,
   }),
 
-  methods: {}
+  apollo: {
+    findAll: {
+      query: STORES_ALL,
+      update({ findAll }) {
+        this.stores = findAll
+      },
+    },
+  },
 }
 </script>
 
