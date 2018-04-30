@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/parcel-bundler/bin/cli.js index.html",
-    "build": "rm -rf .cache && rm -rf dist && node_modules/parcel-bundler/bin/cli.js build index.html"
+    "start": "parcel index.html",
+    "build": "rm -rf .cache && rm -rf dist && parcel build index.html"
   },
   "keywords": [],
   "author": "",
