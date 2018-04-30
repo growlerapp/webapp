@@ -1,6 +1,6 @@
 <template>
   <div class="App">
-    <Header />
+    <Header v-if="$route.name !== 'splash'"/>
 
     <div class="App-body">
       <router-view></router-view>

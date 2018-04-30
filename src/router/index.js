@@ -4,29 +4,43 @@ import Home from '~/src/components/Home'
 import About from '~/src/components/About'
 import Splash from '~/src/components/Splash'
 import Store from '~/src/components/Store'
+import user from '~/src/user'
 
 Vue.use(Router)
 
+const requireUser = (to, from, next) => {
+  if (!user.checkUserData()) {
+    next({
+      path: '/',
+    })
+  } else {
+    next()
+  }
+}
+
 export default new Router({
+  mode: 'history',
+
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About,
-    },
-    {
-      path: '/splash',
-      name: 'Splash',
+      name: 'splash',
       component: Splash,
     },
     {
+      path: '/home',
+      name: 'home',
+      component: Home,
+      beforeEnter: requireUser,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+    {
       path: '/store/:id',
-      name: 'Store',
+      name: 'store',
       component: Store,
     },
   ],

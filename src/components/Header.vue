@@ -17,7 +17,7 @@
       <div class="Header-right">
         <div
           class="Header-btn"
-          v-if="$route.name === 'Store'"
+          v-if="$route.name === 'store'"
           @click="$router.push({ path: '/' })"
         >
           <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">

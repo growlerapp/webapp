@@ -2,13 +2,15 @@
   <div class="Home">
     <Onboarding v-if="isFirstLaunch"/>
 
+    <loading v-if="!stores"/>
+
     <div class="Home-body" v-if="stores">
       <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
 
       <StoreItem
-        v-for="item in stores"
-        :key="item.id"
-        :id="item.id"
+        v-for="(item, k) in stores"
+        :key="k"
+        :id="k"
         :name="item.name"
         :address="item.address"
       />
@@ -19,7 +21,8 @@
 <script>
 import Onboarding from './Onboarding'
 import StoreItem from './StoreItem'
-import STORES_ALL from '~/src/graphql/StoresAll.graphql'
+import Loading from '~/src/components/Loading'
+import STORES_ALL from '~/src/graphql/FindByProximity.graphql'
 
 export default {
   name: 'Home',
@@ -27,6 +30,7 @@ export default {
   components: {
     Onboarding,
     StoreItem,
+    Loading,
   },
 
   data: () => ({
@@ -34,13 +38,24 @@ export default {
     stores: null,
   }),
 
-  apollo: {
-    findAll: {
-      query: STORES_ALL,
-      update({ findAll }) {
-        this.stores = findAll
-      },
-    },
+  mounted() {
+    this.findAll()
+  },
+
+  methods: {
+    findAll() {
+      this.$apollo.query({
+        query: STORES_ALL,
+        variables: {
+          latitude: this.$store.state.userData.lat,
+          longitude: this.$store.state.userData.long,
+        },
+      }).then((result) => {
+        this.stores = result.data.findByProximity
+      }).catch(() => {
+        // console.error(error)
+      })
+    }
   },
 }
 </script>
