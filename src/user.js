@@ -18,7 +18,7 @@ const setUserData = data => {
 
   localStorage.setItem('userData', JSON.stringify(userData))
 
-  setTimeout(() => window.location.replace('/home'), 300)
+  setTimeout(() => window.location.replace('/#/home'), 300)
 }
 
 // check geo
