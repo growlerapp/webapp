@@ -8,11 +8,12 @@
       <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
 
       <StoreItem
-        v-for="(item, k) in stores"
-        :key="k"
-        :id="k"
+        v-for="item in stores"
+        :key="item._id"
+        :id="item._id"
         :name="item.name"
         :address="item.address"
+        :distance="item.distance.text"
       />
     </div>
   </div>

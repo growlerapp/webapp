@@ -17,14 +17,8 @@
 </template>
 
 <script>
-import stores from '~/src/store/fake'
-
 export default {
   name: 'Store',
-
-  mounted() {
-    this.store = stores.find(store => store.id == this.$route.params.id)
-  },
 
   data: () => ({
     store: null
