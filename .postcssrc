@@ -3,6 +3,7 @@
     "postcss-import": {},
     "postcss-cssnext": {
       "features": {
+        "autoprefixer": false,
         "customProperties": {
           "variables": {
             "color-black": "#30322f",
