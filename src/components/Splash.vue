@@ -4,7 +4,7 @@
       <h1>Growler App</h1>
       <div class="Splash-loading" :class="{'is-loading': loading}">
         <h2>Cargando y obteniendo tu ubicación...</h2>
-        <h2 v-show="isGeoError">Debes dar permisos para localizar tu mejor growler</h2>
+        <h2 v-show="isGeoError">Debes dar permisos para localizar tu bar más cercano.</h2>
       </div>
       <loading type="top"/>
     </div>

@@ -44,14 +44,14 @@ export default {
     isFirstLaunch: false,
     stores: null,
     pullBottomConfig: {
-      pullText: 'Release to refresh...', // The text is displayed when you pull down
-      triggerText: 'Release to refresh...', // The text that appears when the trigger distance is pulled down
-      loadingText: 'Loading...', // The text in the load
-      doneText: '', // Load the finished text
-      failText: 'Fail', // Load failed text
-      loadedStayTime: 400, // Time to stay after loading ms
-      stayDistance: 50, // Trigger the distance after the refresh
-      triggerDistance: 70 // Pull down the trigger to trigger the distance
+      pullText: 'Suelta para refrescar...',
+      triggerText: 'Suelta para refrescar...',
+      loadingText: 'Cargando...',
+      doneText: '',
+      failText: '¡Error!',
+      loadedStayTime: 400,
+      stayDistance: 50,
+      triggerDistance: 70
     }
   }),
 
@@ -98,4 +98,6 @@ export default {
   text-decoration: none;
   color: inherit;
 }
+
+.vue-pull-to-wrapper .default-text {}
 </style>
