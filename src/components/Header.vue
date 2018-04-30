@@ -45,6 +45,7 @@ export default {
   background-color: var(--color-black);
   color: var(--color-white);
   font-family: var(--font-family-primary);
+  z-index: 1;
 }
 
 .Header a {

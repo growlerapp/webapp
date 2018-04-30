@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import user from '~/src/user'
-import Loading from '~/src/components/Loading'
+import user from '/src/user'
+import Loading from '/src/components/Loading'
 
 export default {
   name: 'Splash',
@@ -28,14 +28,18 @@ export default {
   }),
 
   mounted() {
-    setTimeout(() => {
+    setTimeout(async () => {
       this.loading = true
+      this.getData()
     }, 600)
+  },
 
-    if (user.getUserData()) {
+  methods: {
+    async getData() {
+      await user.getUserGeo()
       this.$router.push('home')
     }
-  },
+  }
 }
 </script>
 
@@ -43,7 +47,7 @@ export default {
 .Splash-loading {
   opacity: 0;
   visibility: hidden;
-  transition: all .3s .3s ease;
+  transition: all .3s ease;
   transform: translateY(-10px);
 }
 

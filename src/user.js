@@ -4,21 +4,17 @@ const getUserGeo = () => {
     return false
   }
 
-  navigator.geolocation.getCurrentPosition(data => {
-    setUserData(data)
+  return new Promise(resolve => {
+    navigator.geolocation.getCurrentPosition(result => {
+      const data = {
+        lat: result.coords.latitude,
+        long: result.coords.longitude
+      }
+
+      resolve(data)
+      localStorage.setItem('userData', JSON.stringify(data))
+    })
   })
-}
-
-// set user data
-const setUserData = data => {
-  const userData = {
-    lat: data.coords.latitude,
-    long: data.coords.longitude
-  }
-
-  localStorage.setItem('userData', JSON.stringify(userData))
-
-  setTimeout(() => window.location.replace('/#/home'), 300)
 }
 
 // check geo
@@ -27,11 +23,12 @@ const checkUserData = () => {
 }
 
 // get user data
-const getUserData = () => {
-  return checkUserData() ? JSON.parse(localStorage.getItem('userData')) : getUserGeo()
+const getUserData = async () => {
+  return checkUserData() ? JSON.parse(localStorage.getItem('userData')) : await getUserGeo()
 }
 
 export default {
   getUserData,
-  checkUserData
+  checkUserData,
+  getUserGeo
 }

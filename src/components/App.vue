@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Header from '~/src/components/Header'
+import Header from '/src/components/Header'
 
 export default {
   name: 'App',
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>
-@import '~/src/styles/base.css';
+@import '/src/styles/base.css';
 
 .App-body {
   padding: 20px;

@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '~/src/components/Home'
-import About from '~/src/components/About'
-import Splash from '~/src/components/Splash'
-import Store from '~/src/components/Store'
-import user from '~/src/user'
+import Home from '/src/components/Home'
+import About from '/src/components/About'
+import Splash from '/src/components/Splash'
+import Store from '/src/components/Store'
+import user from '/src/user'
 
 Vue.use(Router)
 
@@ -19,8 +19,6 @@ const requireUser = (to, from, next) => {
 }
 
 export default new Router({
-  // mode: 'history',
-
   routes: [
     {
       path: '/',

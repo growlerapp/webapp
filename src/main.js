@@ -17,7 +17,7 @@ new Vue({
   template: '<App/>',
   render: h => h(App),
 
-  beforeMount() {
-    this.$store.commit('setUserData', user.getUserData())
+  async created() {
+    this.$store.commit('setUserData', await user.getUserData())
   },
 })
