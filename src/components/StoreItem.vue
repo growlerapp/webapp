@@ -3,20 +3,18 @@
     <div class="StoreItem-body">
       <div class="StoreItem-meta">
         <div class="StoreItem-meta StoreItem-meta--left">
-          <router-link :to="{ name: 'Store', params: { id: id }}">
+          <router-link :to="{ name: 'store', params: { id: id }}">
             <h3 class="StoreItem-meta-name" v-text="name"></h3>
           </router-link>
           <div class="StoreItem-meta-address" v-text="address"></div>
         </div>
 
         <div class="StoreItem-meta StoreItem-meta--right">
-          <div class="Store-meta-distance">
-            2 kms.
-          </div>
+          <div class="Store-meta-distance" v-text="distance"></div>
 
           <div class="StoreItem-action">
             <router-link
-              :to="{ name: 'Store', params: { id: id }}"
+              :to="{ name: 'store', params: { id: id }}"
               class="StoreItem-btn"
             >
               <svg version="1.1" x="0px" y="0px"

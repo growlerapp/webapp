@@ -7,9 +7,11 @@
         <div>
           Dirección: {{ store.address }}
         </div>
-
         <div>
-          Distancia: 2kms.
+          Distancia: {{ store.distance.text }}
+        </div>
+        <div>
+          Tiempo: {{ store.duration.text }}
         </div>
       </div>
     </div>
@@ -17,20 +19,36 @@
 </template>
 
 <script>
-import stores from '~/src/store/fake'
+import STORE from '/src/graphql/FindByOne.graphql'
 
 export default {
   name: 'Store',
-
-  mounted() {
-    this.store = stores.find(store => store.id == this.$route.params.id)
-  },
 
   data: () => ({
     store: null
   }),
 
-  methods: {},
+  mounted() {
+    this.find()
+  },
+
+  methods: {
+    find() {
+      this.$apollo.query({
+        query: STORE,
+        variables: {
+          id: this.$route.params.id,
+          latitude: this.$store.state.userData.lat,
+          longitude: this.$store.state.userData.long,
+        },
+      }).then((result) => {
+        this.store = result.data.findByProximity[0]
+        console.log
+      }).catch(() => {
+        // console.error(error)
+      })
+    }
+  },
 }
 </script>
 

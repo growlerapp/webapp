@@ -2,30 +2,78 @@
   <div class="Splash">
     <div class="Splash-body">
       <h1>Growler App</h1>
+      <div class="Splash-loading" :class="{'is-loading': loading}">
+        <h2>Cargando y obteniendo tu ubicación...</h2>
+        <h2 v-show="isGeoError">Debes dar permisos para localizar tu bar más cercano.</h2>
+      </div>
+      <loading type="top"/>
     </div>
   </div>
 </template>
 
 <script>
+import user from '/src/user'
+import Loading from '/src/components/Loading'
+
 export default {
   name: 'Splash',
+
+  components: {
+    Loading
+  },
+
+  data: () => ({
+    loading: false,
+    isGeoError: false,
+  }),
+
+  mounted() {
+    setTimeout(async () => {
+      this.loading = true
+      this.getData()
+    }, 600)
+  },
+
+  methods: {
+    async getData() {
+      await user.getUserGeo()
+      this.$router.push('home')
+    }
+  }
 }
 </script>
 
-<style>
-.Splash {
-  height: 100vh;
+<style scoped>
+.Splash-loading {
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+  transform: translateY(-10px);
+}
+
+.Splash .is-loading {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.Splash-body {
+  padding: 0 20px;
+  text-align: center;
+  height: calc(100vh - 200px);
   display: grid;
   align-content: center;
   text-align: center;
   background-color: #f3f5e3;
 }
 
-.Splash-body {
-  padding: 20px;
-}
-
 .Splash h1 {
   font-size: 4rem;
+}
+
+.Splash h2 {
+  font-size: 1rem;
+  font-family: var(--font-family-normal);
+  font-weight: lighter;
 }
 </style>

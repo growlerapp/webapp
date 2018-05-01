@@ -4,25 +4,36 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/parcel-bundler/bin/cli.js index.html",
-    "build": "rm -rf .cache && rm -rf dist && node_modules/parcel-bundler/bin/cli.js build index.html"
+    "start": "parcel index.html",
+    "build": "rm -rf .cache && rm -rf dist && parcel build index.html --no-cache --no-minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.12",
+    "apollo-client": "^2.0.0",
+    "apollo-link": "^1.2.2",
+    "apollo-link-http": "^1.5.4",
     "components": "^0.1.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
+    "graphql": "^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-modules": "^1.1.0",
     "vue": "^2.5.16",
+    "vue-apollo": "^3.0.0-beta.5",
     "vue-hot-reload-api": "^2.3.0",
-    "vue-router": "^3.0.1"
+    "vue-pull-to": "^0.1.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
     "eslint-plugin-vue": "^4.4.0",
+    "graphql-tag": "^2.9.1",
     "parcel-bundler": "^1.7.0",
     "postcss-import": "^11.1.0",
     "postcss-url": "^7.3.2",

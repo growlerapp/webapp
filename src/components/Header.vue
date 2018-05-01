@@ -17,8 +17,8 @@
       <div class="Header-right">
         <div
           class="Header-btn"
-          v-if="$route.name === 'Store'"
-          @click="$router.push({ path: '/' })"
+          v-if="$route.name === 'store'"
+          @click="$router.push({ path: '/home' })"
         >
           <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
             <polygon points="17,0.586 5.586,12 17,23.414 18.414,22 8.414,12 18.414,2 "/>
@@ -45,6 +45,7 @@ export default {
   background-color: var(--color-black);
   color: var(--color-white);
   font-family: var(--font-family-primary);
+  z-index: 1;
 }
 
 .Header a {
