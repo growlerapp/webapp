@@ -44,6 +44,7 @@ export default {
     isFirstLaunch: false,
     stores: null,
     pullBottomConfig: {
+<<<<<<< HEAD
       pullText: 'Release to refresh...', // The text is displayed when you pull down
       triggerText: 'Release to refresh...', // The text that appears when the trigger distance is pulled down
       loadingText: 'Loading...', // The text in the load
@@ -53,6 +54,17 @@ export default {
       stayDistance: 50, // Trigger the distance after the refresh
       triggerDistance: 70, // Pull down the trigger to trigger the distance
     },
+=======
+      pullText: 'Suelta para refrescar...',
+      triggerText: 'Suelta para refrescar...',
+      loadingText: 'Cargando...',
+      doneText: '',
+      failText: '¡Error!',
+      loadedStayTime: 400,
+      stayDistance: 50,
+      triggerDistance: 70
+    }
+>>>>>>> 1f9762b0eb3f3cf0dbbd3ba2ab4dd3ccea051d5c
   }),
 
   mounted() {
@@ -89,6 +101,11 @@ export default {
 </script>
 
 <style>
+.Home {
+  padding: 20px;
+  margin-top: 60px;
+}
+
 .Home-title {
   color: var(--color-black);
   font-size: 2rem;
@@ -108,6 +125,7 @@ export default {
   color: inherit;
 }
 
+<<<<<<< HEAD
 .Home-body > div {
   height: auto !important;
 }
@@ -119,4 +137,7 @@ export default {
     grid-column-gap: 2em;
   }
 }
+=======
+.vue-pull-to-wrapper .default-text {}
+>>>>>>> 1f9762b0eb3f3cf0dbbd3ba2ab4dd3ccea051d5c
 </style>
