@@ -42,24 +42,24 @@
 export default {
   name: 'StoreItem',
 
-  props: [
-    'id',
-    'name',
-    'address',
-    'distance',
-  ],
+  props: ['id', 'name', 'address', 'distance'],
 
-  data: () => ({
-  }),
+  data: () => ({}),
 
-  methods: {}
+  methods: {},
 }
 </script>
 
 <style>
 .StoreItem {
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 1px solid var(--color-yellow);
+}
+
+@media (--lg-viewport) {
+  .StoreItem {
+    border: 0;
+  }
 }
 
 .StoreItem a {

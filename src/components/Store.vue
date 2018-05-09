@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import STORE from '/src/graphql/FindByOne.graphql'
+import STORE from '/src/graphql/FindByOne.gql'
 
 export default {
   name: 'Store',
 
   data: () => ({
-    store: null
+    store: null,
   }),
 
   mounted() {
@@ -34,20 +34,22 @@ export default {
 
   methods: {
     find() {
-      this.$apollo.query({
-        query: STORE,
-        variables: {
-          id: this.$route.params.id,
-          latitude: this.$store.state.userData.lat,
-          longitude: this.$store.state.userData.long,
-        },
-      }).then((result) => {
-        this.store = result.data.findByProximity[0]
-        console.log
-      }).catch(() => {
-        // console.error(error)
-      })
-    }
+      this.$apollo
+        .query({
+          query: STORE,
+          variables: {
+            id: this.$route.params.id,
+            latitude: this.$store.state.userData.lat,
+            longitude: this.$store.state.userData.long,
+          },
+        })
+        .then(result => {
+          this.store = result.data.findByProximity[0]
+        })
+        .catch(() => {
+          console.error(error) // eslint-disable-line
+        })
+    },
   },
 }
 </script>
