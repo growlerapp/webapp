@@ -86,6 +86,11 @@ export default {
 </script>
 
 <style>
+.Home {
+  padding: 20px;
+  margin-top: 60px;
+}
+
 .Home-title {
   color: var(--color-black);
   font-size: 2rem;
