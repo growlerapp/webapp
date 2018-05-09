@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "format": "prettier-standard src/*.{js,vue}",
     "build": "rm -rf .cache && rm -rf dist && parcel build index.html --no-cache --no-minify"
   },
   "keywords": [],
@@ -37,6 +38,7 @@
     "parcel-bundler": "^1.7.0",
     "postcss-import": "^11.1.0",
     "postcss-url": "^7.3.2",
+    "prettier-standard": "^8.0.1",
     "vue-template-compiler": "^2.5.16"
   }
 }
