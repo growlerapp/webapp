@@ -1,7 +1,5 @@
 import Vue from 'vue'
-import {
-  apolloProvider
-} from './apollo'
+import { apolloProvider } from './apollo'
 
 import router from './router'
 import store from './store'
@@ -14,10 +12,10 @@ new Vue({
   store,
   provide: apolloProvider.provide(),
   components: { App },
-  template: '<App/>',
-  render: h => h(App),
 
-  async created() {
+  async created () {
     this.$store.commit('setUserData', await user.getUserData())
   },
+  template: '<App/>',
+  render: h => h(App)
 })

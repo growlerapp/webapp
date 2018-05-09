@@ -24,7 +24,9 @@ const checkUserData = () => {
 
 // get user data
 const getUserData = async () => {
-  return checkUserData() ? JSON.parse(localStorage.getItem('userData')) : await getUserGeo()
+  return checkUserData()
+    ? JSON.parse(localStorage.getItem('userData'))
+    : await getUserGeo()
 }
 
 export default {
