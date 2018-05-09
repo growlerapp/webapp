@@ -7,11 +7,13 @@ query findByOne($id: String!, $latitude: Float!, $longitude: Float!) {
     units: metric
     time_type: departure_time
     time_value: "now"
-    max_distance: 20000
   ) {
     _id
     name
     address
+    geometry {
+      coordinates
+    }
     distance {
       text
       value

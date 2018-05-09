@@ -10,7 +10,7 @@
         </svg> -->
       </div>
       <div class="Header-logo">
-        <router-link to="/">
+        <router-link to="/home">
           Growler App
         </router-link>
       </div>

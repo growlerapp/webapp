@@ -13,9 +13,9 @@ new Vue({
   provide: apolloProvider.provide(),
   components: { App },
 
-  async created () {
+  async created() {
     this.$store.commit('setUserData', await user.getUserData())
   },
   template: '<App/>',
-  render: h => h(App)
+  render: h => h(App),
 })

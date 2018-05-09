@@ -22,7 +22,7 @@
     "graphql": "^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-modules": "^1.1.0",
-    "vue": "^2.5.16",
+    "vue": "^2.2.1",
     "vue-apollo": "^3.0.0-beta.5",
     "vue-hot-reload-api": "^2.3.0",
     "vue-pull-to": "^0.1.6",

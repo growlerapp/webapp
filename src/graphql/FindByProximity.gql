@@ -6,7 +6,7 @@ query findByProximity($latitude: Float!, $longitude: Float!) {
     units: metric
     time_type: departure_time
     time_value: "now"
-    max_distance: 2000000
+    max_distance: 200000
   ) {
     _id
     name

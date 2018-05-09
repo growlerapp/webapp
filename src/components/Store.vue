@@ -14,16 +14,15 @@
         </p>
         <div class="Store-map">
           <GmapMap
-            :center="{lat:11, lng:11}"
+            :center="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
             :zoom="15"
             map-type-id="terrain"
             style="width: 100%; height: 300px"
           >
             <GmapMarker
-              :position="{lat:11, lng:11}"
-              :clickable="true"
-              :draggable="true"
-              @click="center={lat:10, lng:10}"
+              :position="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
+              :clickable="false"
+              :draggable="false"
             />
           </GmapMap>
         </div>
@@ -36,11 +35,11 @@
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-import STORE from '/src/graphql/FindByOne.gql'
+import STORE_QUERY from '/src/graphql/FindByOne.gql'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyD0NV3B5PTJ9P8usxi58i6pi1JpH5XW1n8',
+    key: process.env.GOOGLE_MAPS_KEY,
     libraries: 'places',
   },
 })
@@ -53,26 +52,23 @@ export default {
   }),
 
   mounted() {
-    this.find()
+    setTimeout(() => {
+      this.getStore()
+    }, 10)
   },
 
   methods: {
-    find() {
+    getStore() {
       this.$apollo
         .query({
-          query: STORE,
+          query: STORE_QUERY,
           variables: {
             id: this.$route.params.id,
             latitude: this.$store.state.userData.lat,
             longitude: this.$store.state.userData.long,
           },
         })
-        .then(result => {
-          this.store = result.data.findByProximity[0]
-        })
-        .catch(() => {
-          console.error(error) // eslint-disable-line
-        })
+        .then(result => (this.store = result.data.findByProximity[0]))
     },
   },
 }
