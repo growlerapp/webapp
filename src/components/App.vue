@@ -1,7 +1,6 @@
 <template>
   <div class="App">
     <Header v-if="$route.name !== 'splash'"/>
-
     <div class="App-body">
       <router-view></router-view>
     </div>
@@ -23,8 +22,5 @@ export default {
 <style>
 @import '/src/styles/base.css';
 
-.App-body {
-  padding: 20px;
-  margin-top: 60px;
-}
+.App-body {}
 </style>

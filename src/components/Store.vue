@@ -1,17 +1,30 @@
 <template>
   <div class="Store">
     <div class="Store-body" v-if="store">
-      <h2 class="Store-name" v-text="store.name"></h2>
-
+      <h2 class="Store-name">{{ store.name }}</h2>
       <div class="Store-data">
-        <div>
+        <p>
           Dirección: {{ store.address }}
-        </div>
-        <div>
+        </p>
+        <p>
           Distancia: {{ store.distance.text }}
-        </div>
-        <div>
+        </p>
+        <p>
           Tiempo: {{ store.duration.text }}
+        </p>
+        <div class="Store-map">
+          <GmapMap
+            :center="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
+            :zoom="15"
+            map-type-id="terrain"
+            style="width: 100%; height: 300px"
+          >
+            <GmapMarker
+              :position="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
+              :clickable="false"
+              :draggable="false"
+            />
+          </GmapMap>
         </div>
       </div>
     </div>
@@ -19,40 +32,54 @@
 </template>
 
 <script>
-import STORE from '/src/graphql/FindByOne.graphql'
+import Vue from 'vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+import STORE_QUERY from '/src/graphql/FindByOne.gql'
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.GOOGLE_MAPS_KEY,
+    libraries: 'places',
+  },
+})
 
 export default {
   name: 'Store',
 
   data: () => ({
-    store: null
+    store: null,
   }),
 
   mounted() {
-    this.find()
+    setTimeout(() => {
+      this.getStore()
+    }, 10)
   },
 
   methods: {
-    find() {
-      this.$apollo.query({
-        query: STORE,
-        variables: {
-          id: this.$route.params.id,
-          latitude: this.$store.state.userData.lat,
-          longitude: this.$store.state.userData.long,
-        },
-      }).then((result) => {
-        this.store = result.data.findByProximity[0]
-        console.log
-      }).catch(() => {
-        // console.error(error)
-      })
-    }
+    getStore() {
+      this.$apollo
+        .query({
+          query: STORE_QUERY,
+          variables: {
+            id: this.$route.params.id,
+            latitude: this.$store.state.userData.lat,
+            longitude: this.$store.state.userData.long,
+          },
+        })
+        .then(result => (this.store = result.data.findByProximity[0]))
+    },
   },
 }
 </script>
 
 <style>
+.Store {
+  padding: 20px;
+  margin-top: 60px;
+}
+
 .Store-name {
   margin-top: 0;
   font-size: 2rem;

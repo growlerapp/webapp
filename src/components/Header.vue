@@ -2,15 +2,15 @@
   <div class="Header">
     <div class="Header-body">
       <div class="Header-icon">
-        <svg version="1.1" x="0px" y="0px"
+        <!-- <svg version="1.1" x="0px" y="0px"
           width="48px" height="48px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
           <rect x="2" y="22" width="44" height="4"/>
           <rect x="2" y="8" width="44" height="4"/>
           <rect x="2" y="36" width="44" height="4"/>
-        </svg>
+        </svg> -->
       </div>
       <div class="Header-logo">
-        <router-link to="/">
+        <router-link to="/home">
           Growler App
         </router-link>
       </div>

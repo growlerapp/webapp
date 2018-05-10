@@ -1,13 +1,10 @@
-query findByProximity(
-    $latitude: Float!
-    $longitude: Float!
-  ){
+query findByProximity($latitude: Float!, $longitude: Float!) {
   findByProximity(
     latitude: $latitude
     longitude: $longitude
-    mode: driving,
-    units: metric,
-    time_type: departure_time,
+    mode: driving
+    units: metric
+    time_type: departure_time
     time_value: "now"
     max_distance: 200000
   ) {
@@ -17,7 +14,7 @@ query findByProximity(
     distance {
       text
       value
-    },
+    }
     duration {
       text
       value
