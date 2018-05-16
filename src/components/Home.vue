@@ -4,8 +4,12 @@
 
     <loading v-if="!stores"/>
 
-    <div class="Home-body" v-if="stores">
-      <vue-pull-refresh :on-refresh="refresh()" :config="refreshConfig">
+    <div 
+      v-if="stores" 
+      class="Home-body">
+      <vue-pull-refresh 
+        :on-refresh="refresh()" 
+        :config="refreshConfig">
         <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
         <div class="Home-list">
           <StoreItem
@@ -71,7 +75,7 @@ export default {
         .then(result => {
           this.stores = result.data.findByProximity
         })
-        .catch(() => {
+        .catch(error => {
           console.error(error) // eslint-disable-line
         })
     },
