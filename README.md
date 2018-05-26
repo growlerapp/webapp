@@ -9,10 +9,11 @@
 
 ### Dev
 * PWA
-* vue 2.x
-* vue-router
-* vuex
-* apollo (graphql)
+* Vue 2.x
+* Vue-router
+* Vuex
+* Apollo (graphql)
+* Google maps
 
 ## Install
 
