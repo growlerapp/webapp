@@ -29,6 +29,9 @@
             />
           </GmapMap>
         </div>
+        <div class="Store-link">
+          <a :href="`https://www.google.com/maps/dir/?api=1&destination=${store.geometry.coordinates[1]},${store.geometry.coordinates[0]}`" class="Store-button" target="_blank">Abrir en Google Maps</a>
+        </div>
       </div>
     </div>
   </div>
@@ -91,5 +94,17 @@ export default {
 .Store-name {
   margin-top: 0;
   font-size: 2rem;
+}
+
+.Store-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: 2px solid #eaa74c;
+  color: #eaa74c;
+  background-color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 2px;
 }
 </style>
