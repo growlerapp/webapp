@@ -20,6 +20,7 @@
             :zoom="15"
             map-type-id="terrain"
             style="width: 100%; height: 300px"
+            :options="{scrollwheel: false}"
           >
             <GmapMarker
               :position="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
