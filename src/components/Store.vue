@@ -1,5 +1,7 @@
 <template>
   <div class="Store">
+    <loading v-if="!store"/>
+
     <div class="Store-body" v-if="store">
       <h2 class="Store-name">{{ store.name }}</h2>
       <div class="Store-data">
@@ -10,7 +12,7 @@
           Distancia: {{ store.distance.text }}
         </p>
         <p>
-          Tiempo: {{ store.duration.text }}
+          Tiempo: {{ store.duration.text }} (auto)
         </p>
         <div class="Store-map">
           <GmapMap
@@ -18,6 +20,7 @@
             :zoom="15"
             map-type-id="terrain"
             style="width: 100%; height: 300px"
+            :options="{scrollwheel: false}"
           >
             <GmapMarker
               :position="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
@@ -37,6 +40,7 @@
 <script>
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import Loading from '/src/components/Loading'
 
 import STORE_QUERY from '/src/graphql/FindByOne.gql'
 
@@ -49,6 +53,10 @@ Vue.use(VueGoogleMaps, {
 
 export default {
   name: 'Store',
+
+  components: {
+    Loading,
+  },
 
   data: () => ({
     store: null,

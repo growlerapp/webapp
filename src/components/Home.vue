@@ -4,9 +4,13 @@
 
     <loading v-if="!stores"/>
 
-    <div class="Home-body" v-if="stores">
-      <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
-      <pull-to :top-load-method="refresh" :top-config="pullBottomConfig">
+    <div 
+      v-if="stores" 
+      class="Home-body">
+      <vue-pull-refresh 
+        :on-refresh="refresh()" 
+        :config="refreshConfig">
+        <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
         <div class="Home-list">
           <StoreItem
             v-for="item in stores"
@@ -17,13 +21,13 @@
             :distance="item.distance.text"
           />
         </div>
-      </pull-to>
+      </vue-pull-refresh>
     </div>
   </div>
 </template>
 
 <script>
-import PullTo from 'vue-pull-to'
+import VuePullRefresh from 'vue-pull-refresh'
 import Onboarding from '/src/components/Onboarding'
 import StoreItem from '/src/components/StoreItem'
 import Loading from '/src/components/Loading'
@@ -37,21 +41,18 @@ export default {
     Onboarding,
     StoreItem,
     Loading,
-    PullTo,
+    'vue-pull-refresh': VuePullRefresh,
   },
 
   data: () => ({
     isFirstLaunch: false,
     stores: null,
-    pullBottomConfig: {
-      pullText: 'Suelta para refrescar...',
-      triggerText: 'Suelta para refrescar...',
-      loadingText: 'Cargando...',
+    refreshConfig: {
+      readyLabel: 'Suelta para refrescar...',
+      startLabel: 'Suelta para refrescar...',
+      loadingLabel: 'Cargando...',
       doneText: '',
-      failText: '¡Error!',
-      loadedStayTime: 400,
-      stayDistance: 50,
-      triggerDistance: 70,
+      errorLabel: '¡Error!',
     },
   }),
 
@@ -74,15 +75,16 @@ export default {
         .then(result => {
           this.stores = result.data.findByProximity
         })
-        .catch(() => {
+        .catch(error => {
           console.error(error) // eslint-disable-line
         })
     },
 
-    async refresh(loaded) {
-      const data = await user.getUserGeo()
-      this.findAll(data)
-      loaded('done')
+    refresh() {
+      setTimeout(async () => {
+        const data = await user.getUserGeo()
+        this.findAll(data)
+      })
     },
   },
 }
@@ -123,5 +125,25 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 2em;
   }
+}
+
+/* Pull to refresh styles */
+.pull-down-header {
+  background-color: transparent !important;
+}
+
+.pull-down-content {
+  color: inherit !important;
+  font-size: 12px !important;
+  max-width: 100% !important;
+  border: 0 !important;
+}
+
+.pull-down-content--icon {
+  display: none !important;
+}
+
+.pull-down-content--label {
+  margin: 0 !important;
 }
 </style>

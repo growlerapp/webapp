@@ -42,7 +42,7 @@ export default {
 
 <style>
 .StoreItem {
-  padding: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--color-yellow);
 }
 
