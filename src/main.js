@@ -1,21 +1,15 @@
 import Vue from 'vue'
-import { apolloProvider } from './apollo'
-
+import App from './App.vue'
 import router from './router'
 import store from './store'
-import user from './user'
-import App from './components/App'
+import './registerServiceWorker'
+import { apolloProvider } from './apollo'
+
+Vue.config.productionTip = false
 
 new Vue({
-  el: '#root',
   router,
   store,
   provide: apolloProvider.provide(),
-  components: { App },
-
-  async created() {
-    this.$store.commit('setUserData', await user.getUserData())
-  },
-  template: '<App/>',
-  render: h => h(App),
-})
+  render: h => h(App)
+}).$mount('#app')

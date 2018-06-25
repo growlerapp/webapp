@@ -4,11 +4,11 @@
 
     <loading v-if="!stores"/>
 
-    <div 
-      v-if="stores" 
+    <div
+      v-if="stores"
       class="Home-body">
-      <vue-pull-refresh 
-        :on-refresh="refresh()" 
+      <vue-pull-refresh
+        :on-refresh="refresh()"
         :config="refreshConfig">
         <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
         <div class="Home-list">
@@ -28,11 +28,11 @@
 
 <script>
 import VuePullRefresh from 'vue-pull-refresh'
-import Onboarding from '/src/components/Onboarding'
-import StoreItem from '/src/components/StoreItem'
-import Loading from '/src/components/Loading'
-import STORES_ALL from '/src/graphql/FindByProximity.gql'
-import user from '/src/user'
+import Onboarding from '@/components/Onboarding'
+import StoreItem from '@/components/StoreItem'
+import Loading from '@/components/Loading'
+import STORES_ALL from '@/graphql/FindByProximity.gql'
+import user from '@/user'
 
 export default {
   name: 'Home',
@@ -41,7 +41,7 @@ export default {
     Onboarding,
     StoreItem,
     Loading,
-    'vue-pull-refresh': VuePullRefresh,
+    'vue-pull-refresh': VuePullRefresh
   },
 
   data: () => ({
@@ -52,25 +52,23 @@ export default {
       startLabel: 'Suelta para refrescar...',
       loadingLabel: 'Cargando...',
       doneText: '',
-      errorLabel: '¡Error!',
-    },
+      errorLabel: '¡Error!'
+    }
   }),
 
-  mounted() {
-    setTimeout(() => {
-      this.findAll()
-    }, 10)
+  mounted () {
+    this.refresh()
   },
 
   methods: {
-    findAll(data) {
+    findAll (data) {
       this.$apollo
         .query({
           query: STORES_ALL,
           variables: {
             latitude: data ? data.lat : this.$store.state.userData.lat,
-            longitude: data ? data.long : this.$store.state.userData.long,
-          },
+            longitude: data ? data.long : this.$store.state.userData.long
+          }
         })
         .then(result => {
           this.stores = result.data.findByProximity
@@ -80,13 +78,13 @@ export default {
         })
     },
 
-    refresh() {
+    refresh () {
       setTimeout(async () => {
         const data = await user.getUserGeo()
         this.findAll(data)
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

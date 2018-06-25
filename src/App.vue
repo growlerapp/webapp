@@ -1,3 +1,31 @@
+<template>
+  <div id="app" class="App">
+    <Header v-if="$route.name !== 'splash'"/>
+
+    <div class="App-body">
+      <router-view></router-view>
+    </div>
+  </div>
+</template>
+
+<script>
+import Header from '@/components/Header'
+import user from '@/user'
+
+export default {
+  name: 'App',
+
+  components: {
+    Header
+  },
+
+  async created () {
+    this.$store.commit('setUserData', await user.getUserData())
+  }
+}
+</script>
+
+<style>
 html,
 body {
   margin: 0;
@@ -48,3 +76,4 @@ h3 {
 .hidden {
   display: none;
 }
+</style>
