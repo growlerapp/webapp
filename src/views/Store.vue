@@ -74,17 +74,15 @@ export default {
           }
         })
         .then(result => (this.store = result.data.findByProximity[0]))
+        .catch(error => {
+          console.error(error) // eslint-disable-line
+        })
     }
   }
 }
 </script>
 
 <style>
-.Store {
-  padding: 20px;
-  margin-top: 60px;
-}
-
 .Store-name {
   margin-top: 0;
   font-size: 2rem;

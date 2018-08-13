@@ -1,5 +1,9 @@
 <template>
-  <div id="app" class="App">
+  <div
+    id="app"
+    class="App"
+    :class="{'App--alt': $route.name === 'splash'}"
+  >
     <Header v-if="$route.name !== 'splash'"/>
 
     <div class="App-body">
@@ -75,5 +79,15 @@ h3 {
 
 .hidden {
   display: none;
+}
+
+.App-body {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.App--alt .App-body {
+  margin: 0;
+  padding: 0;
 }
 </style>

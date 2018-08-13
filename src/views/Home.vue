@@ -1,7 +1,6 @@
 <template>
   <div class="Home">
     <Onboarding v-if="isFirstLaunch"/>
-
     <loading v-if="!stores"/>
 
     <div
@@ -70,9 +69,7 @@ export default {
             longitude: data ? data.long : this.$store.state.userData.long
           }
         })
-        .then(result => {
-          this.stores = result.data.findByProximity
-        })
+        .then(({data: {findByProximity}}) => (this.stores = findByProximity))
         .catch(error => {
           console.error(error) // eslint-disable-line
         })
@@ -89,11 +86,6 @@ export default {
 </script>
 
 <style>
-.Home {
-  padding: 20px;
-  margin-top: 60px;
-}
-
 .Home-title {
   color: var(--color-black);
   font-size: 2rem;
