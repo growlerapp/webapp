@@ -6,14 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loading: true,
-    userData: {},
+    userData: {}
   },
+
   mutations: {
-    setLoading(state, value) {
+    setLoading (state, value) {
       state.loading = value
     },
-    setUserData(state, value) {
+    setUserData (state, value) {
       state.userData = value
-    },
+    }
   }
 })

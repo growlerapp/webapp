@@ -5,7 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 
 const httpLink = createHttpLink({
-  uri: process.env.GRAPHQL_API
+  uri: process.env.VUE_APP_GRAPHQL_API
 })
 
 // Create the apollo client
