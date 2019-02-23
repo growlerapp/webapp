@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>icons</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .preview {
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .preview .inner {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #f5f5f5;
+            -webkit-border-radius: 3px 3px 0 0;
+            -moz-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .preview .inner i {
+            line-height: 85px;
+            font-size: 40px;
+            color: #333;
+        }
+
+        .label {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 10px;
+            font-family: Monaco, monospace;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: #ddd;
+            -webkit-border-radius: 0 0 3px 3px;
+            -moz-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+            color: #666;
+        }
+
+        @font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: "icons";
+    src: url("./icons.eot?1d1d7bcfdf00e6291f254c304e91c96f?#iefix") format("embedded-opentype"),
+url("./icons.woff2?1d1d7bcfdf00e6291f254c304e91c96f") format("woff2"),
+url("./icons.woff?1d1d7bcfdf00e6291f254c304e91c96f") format("woff"),
+url("./icons.ttf?1d1d7bcfdf00e6291f254c304e91c96f") format("truetype"),
+url("./icons.svg?1d1d7bcfdf00e6291f254c304e91c96f#icons") format("svg");
+}
+
+[class^="ico-"]:before,
+[class*=" ico-"]:before {
+  font-family: "icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-arrows-24px-outline-1_minimal-down:before {
+    content: "\f101";
+}
+.ico-arrows-24px-outline-1_minimal-left:before {
+    content: "\f102";
+}
+.ico-arrows-24px-outline-1_minimal-right:before {
+    content: "\f103";
+}
+.ico-arrows-24px-outline-1_minimal-up:before {
+    content: "\f104";
+}
+.ico-arrows-24px-outline-1_tail-left:before {
+    content: "\f105";
+}
+.ico-arrows-24px-outline-1_tail-right:before {
+    content: "\f106";
+}
+.ico-arrows-32px-outline-1_tail-left:before {
+    content: "\f107";
+}
+.ico-arrows-32px-outline-1_tail-right:before {
+    content: "\f108";
+}
+.ico-arrows-48px-outline-2_square-download:before {
+    content: "\f109";
+}
+.ico-arrows-minimal-down:before {
+    content: "\f10a";
+}
+.ico-arrows-minimal-left:before {
+    content: "\f10b";
+}
+.ico-arrows-minimal-right:before {
+    content: "\f10c";
+}
+.ico-arrows-minimal-up:before {
+    content: "\f10d";
+}
+.ico-arrows-small-down:before {
+    content: "\f10e";
+}
+.ico-arrows-small-left:before {
+    content: "\f10f";
+}
+.ico-arrows-small-right:before {
+    content: "\f110";
+}
+.ico-arrows-small-up:before {
+    content: "\f111";
+}
+.ico-arrows-tail-left:before {
+    content: "\f112";
+}
+.ico-arrows-tail-right:before {
+    content: "\f113";
+}
+.ico-arrows-tail-up:before {
+    content: "\f114";
+}
+.ico-beer-shop-1:before {
+    content: "\f115";
+}
+.ico-beer-shop:before {
+    content: "\f116";
+}
+.ico-bottle:before {
+    content: "\f117";
+}
+.ico-bus:before {
+    content: "\f118";
+}
+.ico-car:before {
+    content: "\f119";
+}
+.ico-cross:before {
+    content: "\f11a";
+}
+.ico-dollar-circle:before {
+    content: "\f11b";
+}
+.ico-dollar:before {
+    content: "\f11c";
+}
+.ico-growler-1:before {
+    content: "\f11d";
+}
+.ico-growler:before {
+    content: "\f11e";
+}
+.ico-hop:before {
+    content: "\f11f";
+}
+.ico-location-compass:before {
+    content: "\f120";
+}
+.ico-location-gps:before {
+    content: "\f121";
+}
+.ico-location:before {
+    content: "\f122";
+}
+.ico-menu-dots:before {
+    content: "\f123";
+}
+.ico-time:before {
+    content: "\f124";
+}
+.ico-ui-32px-outline-3_menu-right:before {
+    content: "\f125";
+}
+.ico-ui-48px-outline-2_small-add:before {
+    content: "\f126";
+}
+.ico-ui-48px-outline-2_small-delete:before {
+    content: "\f127";
+}
+.ico-user:before {
+    content: "\f128";
+}
+.ico-walking:before {
+    content: "\f129";
+}
+.ico-world:before {
+    content: "\f12a";
+}
+
+
+        @font-face {
+            font-weight: normal;
+            font-style: normal;
+            font-family: "icons";
+            src: url("icons.eot?907bf5ce6cb8a9e0ae2f738a8340c15b?#iefix") format("embedded-opentype"),
+        url("icons.woff2?907bf5ce6cb8a9e0ae2f738a8340c15b") format("woff2"),
+        url("icons.woff?907bf5ce6cb8a9e0ae2f738a8340c15b") format("woff"),
+        url("icons.ttf?907bf5ce6cb8a9e0ae2f738a8340c15b") format("truetype"),
+        url("icons.svg?907bf5ce6cb8a9e0ae2f738a8340c15b#icons") format("svg");
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>icons</h1>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_minimal-down"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_minimal-down" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_minimal-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_minimal-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_minimal-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_minimal-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_minimal-up"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_minimal-up" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_tail-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_tail-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-24px-outline-1_tail-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-24px-outline-1_tail-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-32px-outline-1_tail-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-32px-outline-1_tail-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-32px-outline-1_tail-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-32px-outline-1_tail-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-48px-outline-2_square-download"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-48px-outline-2_square-download" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-minimal-down"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-minimal-down" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-minimal-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-minimal-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-minimal-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-minimal-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-minimal-up"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-minimal-up" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-small-down"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-small-down" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-small-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-small-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-small-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-small-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-small-up"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-small-up" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-tail-left"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-tail-left" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-tail-right"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-tail-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-arrows-tail-up"></i>
+            </span>
+            <br>
+            <input type="text" value="arrows-tail-up" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-beer-shop-1"></i>
+            </span>
+            <br>
+            <input type="text" value="beer-shop-1" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-beer-shop"></i>
+            </span>
+            <br>
+            <input type="text" value="beer-shop" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-bottle"></i>
+            </span>
+            <br>
+            <input type="text" value="bottle" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-bus"></i>
+            </span>
+            <br>
+            <input type="text" value="bus" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-car"></i>
+            </span>
+            <br>
+            <input type="text" value="car" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-cross"></i>
+            </span>
+            <br>
+            <input type="text" value="cross" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-dollar-circle"></i>
+            </span>
+            <br>
+            <input type="text" value="dollar-circle" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-dollar"></i>
+            </span>
+            <br>
+            <input type="text" value="dollar" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-growler-1"></i>
+            </span>
+            <br>
+            <input type="text" value="growler-1" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-growler"></i>
+            </span>
+            <br>
+            <input type="text" value="growler" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-hop"></i>
+            </span>
+            <br>
+            <input type="text" value="hop" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-location-compass"></i>
+            </span>
+            <br>
+            <input type="text" value="location-compass" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-location-gps"></i>
+            </span>
+            <br>
+            <input type="text" value="location-gps" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-location"></i>
+            </span>
+            <br>
+            <input type="text" value="location" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-menu-dots"></i>
+            </span>
+            <br>
+            <input type="text" value="menu-dots" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-time"></i>
+            </span>
+            <br>
+            <input type="text" value="time" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-ui-32px-outline-3_menu-right"></i>
+            </span>
+            <br>
+            <input type="text" value="ui-32px-outline-3_menu-right" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-ui-48px-outline-2_small-add"></i>
+            </span>
+            <br>
+            <input type="text" value="ui-48px-outline-2_small-add" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-ui-48px-outline-2_small-delete"></i>
+            </span>
+            <br>
+            <input type="text" value="ui-48px-outline-2_small-delete" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-user"></i>
+            </span>
+            <br>
+            <input type="text" value="user" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-walking"></i>
+            </span>
+            <br>
+            <input type="text" value="walking" class="label">
+        </div>
+
+
+        <div class="preview">
+            <span class="inner">
+                <i class="ico-world"></i>
+            </span>
+            <br>
+            <input type="text" value="world" class="label">
+        </div>
+
+
+</body>
+</html>
