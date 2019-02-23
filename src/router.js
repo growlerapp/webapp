@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import Splash from '@/views/Splash'
+import Onboarding from '@/views/Onboarding'
 import Store from '@/views/Store'
 import user from '@/user'
 
@@ -18,11 +19,24 @@ const requireUser = (to, from, next) => {
 }
 
 export default new Router({
+  scrollBehavior () {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 300)
+    })
+  },
+
   routes: [
     {
       path: '/',
       name: 'splash',
       component: Splash
+    },
+    {
+      path: '/onboarding',
+      name: 'onboarding',
+      component: Onboarding
     },
     {
       path: '/home',
