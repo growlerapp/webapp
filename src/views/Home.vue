@@ -1,58 +1,39 @@
 <template>
   <div class="Home">
-    <Onboarding v-if="isFirstLaunch"/>
     <loading v-if="!stores"/>
 
     <div
       v-if="stores"
       class="Home-body">
-      <vue-pull-refresh
-        :on-refresh="refresh()"
-        :config="refreshConfig">
-        <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
-        <div class="Home-list">
-          <StoreItem
-            v-for="item in stores"
-            :key="item._id"
-            :id="item._id"
-            :name="item.name"
-            :address="item.address"
-            :distance="item.distance.text"
-          />
-        </div>
-      </vue-pull-refresh>
+      <StoreItem
+        v-for="item in stores"
+        :key="item._id"
+        :id="item._id"
+        :name="item.name"
+        :address="item.address"
+        :distance="item.distance.text"
+        :image="item.image"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import VuePullRefresh from 'vue-pull-refresh'
-import Onboarding from '@/components/Onboarding'
+import FIND_BY_PROXIMITY from '@/graphql/FindByProximity.gql'
 import StoreItem from '@/components/StoreItem'
 import Loading from '@/components/Loading'
-import STORES_ALL from '@/graphql/FindByProximity.gql'
 import user from '@/user'
 
 export default {
   name: 'Home',
 
   components: {
-    Onboarding,
     StoreItem,
-    Loading,
-    'vue-pull-refresh': VuePullRefresh
+    Loading
   },
 
   data: () => ({
-    isFirstLaunch: false,
-    stores: null,
-    refreshConfig: {
-      readyLabel: 'Suelta para refrescar...',
-      startLabel: 'Suelta para refrescar...',
-      loadingLabel: 'Cargando...',
-      doneText: '',
-      errorLabel: '¡Error!'
-    }
+    stores: null
   }),
 
   mounted () {
@@ -60,26 +41,26 @@ export default {
   },
 
   methods: {
-    findAll (data) {
-      this.$apollo
-        .query({
-          query: STORES_ALL,
-          variables: {
-            latitude: data ? data.lat : this.$store.state.userData.lat,
-            longitude: data ? data.long : this.$store.state.userData.long
-          }
-        })
-        .then(({data: {findByProximity}}) => (this.stores = findByProximity))
-        .catch(error => {
-          console.error(error) // eslint-disable-line
-        })
-    },
-
     refresh () {
       setTimeout(async () => {
         const data = await user.getUserGeo()
         this.findAll(data)
       })
+    },
+
+    findAll (data) {
+      this.$apollo
+        .query({
+          query: FIND_BY_PROXIMITY,
+          variables: {
+            latitude: data ? data.lat : this.$store.state.userData.lat,
+            longitude: data ? data.long : this.$store.state.userData.long
+          }
+        })
+        .then(({ data: { findByProximity } }) => (this.stores = findByProximity))
+        .catch(error => {
+          console.error(error) // eslint-disable-line
+        })
     }
   }
 }
