@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <div class="Store-body">
+        <div class="Store-body" v-show="!isFullScreenMap">
           <StoreItemFull
             :name="store.name"
             :address="store.address"
@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <div class="Store-footer">
+        <div class="Store-footer" v-show="!isFullScreenMap">
           <img class="Store-footer-hop" src="/img/img-hop.svg" alt="hop">
         </div>
       </div>
@@ -141,7 +141,7 @@ export default {
         const googleMapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
         const storeLat = this.store.geometry.coordinates[1]
         const storeLong = this.store.geometry.coordinates[0]
-        return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=17&size=400x300&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
+        return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=17&size=500x400&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
       }
     }
   },
@@ -193,7 +193,7 @@ export default {
 }
 
 .Store-map.isFullScreen {
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
 .Store-map:after {
@@ -202,8 +202,10 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent 0%, #fafbf1);
+  height: 250px;
+  background-image: url(/img/img-map-mask.png);
+  background-repeat: repeat-x;
+  /* background: linear-gradient(to bottom, transparent 0%, #fafbf1); */
 }
 
 .Store-map.isFullScreen:after {
@@ -215,16 +217,15 @@ export default {
 }
 
 .Store-map-bottom {
-  height: 60px;
   background-color: var(--color-red);
   color: var(--color-white);
   text-align: center;
-  padding: 20px;
+  padding: 18px;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  bottom: 20px;
+  bottom: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
