@@ -8,8 +8,10 @@
 
       <ul class="Menu-list">
         <li class="Menu-item">
-          <h3>Inicio</h3>
-          <span>volver</span>
+          <router-link to=/home @click.native="closeMenu">
+            <h3>Inicio</h3>
+            <span>volver</span>
+          </router-link>
         </li>
         <li class="Menu-item">
           <h3>Acerca</h3>
@@ -140,5 +142,9 @@ export default {
 .Menu-item span {
   font-family: var(--font-family-normal);
   font-size: 1rem;
+}
+
+.Menu-item a {
+  color: inherit;
 }
 </style>
