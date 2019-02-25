@@ -13,7 +13,7 @@
     </div>
     <div class="StoreItemFull-distance">
       <i class="ico-location-gps"></i>
-      <span>{{distance}}</span>
+      <span>{{distance.replace(',', '.')}}</span>
     </div>
   </div>
 </template>
