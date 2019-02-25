@@ -1,12 +1,12 @@
 <template>
-  <div class="Loading" :class="[_type]"></div>
+  <div class="Loading" :class="[_type, _color]"></div>
 </template>
 
 <script>
 export default {
   name: 'Loading',
 
-  props: ['type'],
+  props: ['type', 'color'],
 
   computed: {
     _type () {
@@ -14,6 +14,12 @@ export default {
         'Loading--top': this.type === 'top',
         'Loading--relative': this.type === 'relative',
         'Loading--left': this.type === 'left'
+      }
+    },
+
+    _color () {
+      return {
+        'Loading--colorWhite': this.color === 'white'
       }
     }
   }
@@ -30,11 +36,16 @@ export default {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   position: fixed;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   top: 50%;
   left: 50%;
   z-index: 10;
+  margin-left: -18px;
+}
+
+.Loading--colorWhite {
+  background-image: url(/img/img-hop-white.svg);
 }
 
 .Loading--relative {
