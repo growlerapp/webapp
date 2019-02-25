@@ -2,11 +2,11 @@
     font-weight: normal;
     font-style: normal;
     font-family: "icons";
-    src: url("./icons.eot?aeed002d5877b5250002faee0122ba10?#iefix") format("embedded-opentype"),
-url("./icons.woff2?aeed002d5877b5250002faee0122ba10") format("woff2"),
-url("./icons.woff?aeed002d5877b5250002faee0122ba10") format("woff"),
-url("./icons.ttf?aeed002d5877b5250002faee0122ba10") format("truetype"),
-url("./icons.svg?aeed002d5877b5250002faee0122ba10#icons") format("svg");
+    src: url("./icons.eot?c41b1ae96e2633e169cacb9dc6bfa8fe?#iefix") format("embedded-opentype"),
+url("./icons.woff2?c41b1ae96e2633e169cacb9dc6bfa8fe") format("woff2"),
+url("./icons.woff?c41b1ae96e2633e169cacb9dc6bfa8fe") format("woff"),
+url("./icons.ttf?c41b1ae96e2633e169cacb9dc6bfa8fe") format("truetype"),
+url("./icons.svg?c41b1ae96e2633e169cacb9dc6bfa8fe#icons") format("svg");
 }
 
 [class^="ico-"]:before,
@@ -100,51 +100,57 @@ url("./icons.svg?aeed002d5877b5250002faee0122ba10#icons") format("svg");
 .ico-cross:before {
     content: "\f11a";
 }
-.ico-dollar-circle:before {
+.ico-cycling:before {
     content: "\f11b";
 }
-.ico-dollar:before {
+.ico-dollar-circle:before {
     content: "\f11c";
 }
-.ico-growler-1:before {
+.ico-dollar:before {
     content: "\f11d";
 }
-.ico-growler:before {
+.ico-growler-1:before {
     content: "\f11e";
 }
-.ico-hop:before {
+.ico-growler:before {
     content: "\f11f";
 }
-.ico-location-compass:before {
+.ico-hop:before {
     content: "\f120";
 }
-.ico-location-gps:before {
+.ico-location-compass:before {
     content: "\f121";
 }
-.ico-location:before {
+.ico-location-gps:before {
     content: "\f122";
 }
-.ico-menu-dots:before {
+.ico-location:before {
     content: "\f123";
 }
-.ico-time:before {
+.ico-menu-dots:before {
     content: "\f124";
 }
-.ico-ui-32px-outline-3_menu-right:before {
+.ico-pin:before {
     content: "\f125";
 }
-.ico-ui-48px-outline-2_small-add:before {
+.ico-time:before {
     content: "\f126";
 }
-.ico-ui-48px-outline-2_small-delete:before {
+.ico-ui-32px-outline-3_menu-right:before {
     content: "\f127";
 }
-.ico-user:before {
+.ico-ui-48px-outline-2_small-add:before {
     content: "\f128";
 }
-.ico-walking:before {
+.ico-ui-48px-outline-2_small-delete:before {
     content: "\f129";
 }
-.ico-world:before {
+.ico-user:before {
     content: "\f12a";
+}
+.ico-walking:before {
+    content: "\f12b";
+}
+.ico-world:before {
+    content: "\f12c";
 }
