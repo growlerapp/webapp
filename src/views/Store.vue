@@ -33,15 +33,19 @@
           <div class="Store-arriving-list">
             <div>
               <i class="ico-walking"></i>
-              10 min
+              <div>20 min</div>
+            </div>
+            <div>
+              <i class="ico-cycling"></i>
+              <div>10 min</div>
             </div>
             <div>
               <i class="ico-bus"></i>
-              6 min
+              <div>6 min</div>
             </div>
             <div>
               <i class="ico-car"></i>
-              4 min
+              <div>4 min</div>
             </div>
           </div>
         </div>
@@ -180,8 +184,12 @@ export default {
 }
 
 .Store-arriving-list i {
-  font-size: 2rem;
+  font-size: 2.4rem;
   vertical-align: middle;
+}
+
+.Store-arriving-list > div {
+  text-align: center;
 }
 
 .Store-types,
