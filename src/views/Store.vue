@@ -2,80 +2,67 @@
   <div class="Store">
     <loading v-if="!store"/>
 
-    <template v-if="store">
-      <!-- <div class="Store-map">
-        <GmapMap
-          :center="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
-          :zoom="15"
-          map-type-id="terrain"
-          style="width: 100%; height: 300px"
-        >
-          <GmapMarker
-            :position="{lat: store.geometry.coordinates[1], lng: store.geometry.coordinates[0]}"
-            :clickable="false"
-            :draggable="false"
+    <transition name="fade">
+      <div v-if="store">
+        <div class="Store-map" :style="{backgroundImage: 'url(' + getStaticMap + ')'}"></div>
+
+        <div class="Store-body">
+          <StoreItemFull
+            :name="store.name"
+            :address="store.address"
+            :distance="store.distance.text"
           />
-        </GmapMap>
-      </div> -->
 
-      <div class="Store-map" :style="{backgroundImage: 'url(' + getStaticMap + ')'}"></div>
+          <div class="Store-arriving">
+            <div class="u-title">Llegarías en</div>
 
-      <div class="Store-body">
-        <StoreItemFull
-          :name="store.name"
-          :address="store.address"
-          :distance="store.distance.text"
-        />
+            <div class="Store-arriving-list">
+              <div>
+                <i class="ico-walking"></i>
+                <div>20 min</div>
+              </div>
+              <div>
+                <i class="ico-cycling"></i>
+                <div>10 min</div>
+              </div>
+              <div>
+                <i class="ico-bus"></i>
+                <div>6 min</div>
+              </div>
+              <div>
+                <i class="ico-car"></i>
+                <div>4 min</div>
+              </div>
+            </div>
+          </div>
 
-        <div class="Store-arriving">
-          <div class="u-title">Llegarías en</div>
+          <img class="Store-sep" src="/img/img-separator.svg" alt="sep">
 
-          <div class="Store-arriving-list">
-            <div>
-              <i class="ico-walking"></i>
-              <div>20 min</div>
+          <div class="Store-types">
+            <div class="u-title">Tipos de cervezas</div>
+
+            <div class="Store-types-list">
+              <div>Growler IPA | 7º | IBU 50</div>
+              <div>Cuello negro ambar | 5º | IBU 20</div>
+              <div>Kross golden | 5,3º | IBU 25</div>
+              <div>Jester saison | 6º</div>
             </div>
-            <div>
-              <i class="ico-cycling"></i>
-              <div>10 min</div>
-            </div>
-            <div>
-              <i class="ico-bus"></i>
-              <div>6 min</div>
-            </div>
-            <div>
-              <i class="ico-car"></i>
-              <div>4 min</div>
-            </div>
+          </div>
+
+          <img class="Store-sep" src="/img/img-separator.svg" alt="sep">
+
+          <div class="Store-values">
+            <div class="u-title">Valores</div>
+
+            <div>Entre $3000 y $6000 pesos por litro</div>
           </div>
         </div>
 
-        <img class="Store-sep" src="/img/img-separator.svg" alt="sep">
-
-        <div class="Store-types">
-          <div class="u-title">Tipos de cervezas</div>
-
-          <div class="Store-types-list">
-            <div>Growler IPA | 7º | IBU 50</div>
-            <div>Cuello negro ambar | 5º | IBU 20</div>
-            <div>Kross golden | 5,3º | IBU 25</div>
-            <div>Jester saison | 6º</div>
-          </div>
-        </div>
-
-        <img class="Store-sep" src="/img/img-separator.svg" alt="sep">
-
-        <div class="Store-values">
-          <div class="u-title">Valores</div>
-
-          <div>Entre $3000 y $6000 pesos por litro</div>
+        <div class="Store-footer">
+          <img class="Store-footer-hop" src="/img/img-hop.svg" alt="hop">
         </div>
       </div>
-
-      <div class="Store-footer">
-        <img class="Store-footer-hop" src="/img/img-hop.svg" alt="hop">
-      </div>
-    </template>
+    </transition>
   </div>
 </template>
 
@@ -104,6 +91,14 @@ export default {
   data: () => ({
     store: null
   }),
+
+  mounted () {
+    this.$store.commit('setInStore', true)
+  },
+
+  beforeDestroy () {
+    this.$store.commit('setInStore', false)
+  },
 
   computed: {
     getStaticMap () {

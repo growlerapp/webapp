@@ -1,9 +1,13 @@
 <template>
   <div class="Header">
-    <div class="Header-menu" @click="openMenu">
-      <div class="Header-menu-icon" v-hammer:pan.right="panToRight">
-        <i class="ico-menu-dots"></i>
-      </div>
+    <div class="Header-left">
+      <transition name="fade">
+        <template v-if="this.$store.state.isInStore">
+          <router-link to="/home">
+            <i class="ico-arrow-left"></i>
+          </router-link>
+        </template>
+      </transition>
     </div>
 
     <v-menu/>
@@ -11,9 +15,13 @@
     <div class="Header-logo">
       <logo/>
     </div>
-    <!-- <div class="Header-user">
-      <i class="ico-user"></i>
-    </div>-->
+
+    <div class="Header-menu" @click="openMenu">
+      <div class="Header-menu-icon" v-hammer:pan.right="panToRight">
+        <i class="ico-menu-dots"></i>
+      </div>
+    </div>
+
     <div class="Header-line"></div>
   </div>
 </template>
@@ -54,7 +62,20 @@ export default {
   right: 0;
   left: 0;
   z-index: 100;
-  /* box-shadow: 1px 5px 2px #f6868633; */
+}
+
+.Header-left {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-white);
+  opacity: .8;
+}
+
+.Header-left a {
+  color: var(--color-white);
 }
 
 .Header-line {
@@ -71,23 +92,16 @@ export default {
 .Header-menu-icon {
   position: absolute;
   top: 18px;
-  left: 10px;
+  right: 20px;
   font-size: 2rem;
   transform: rotate(90deg);
   cursor: pointer;
   color: var(--color-white);
+  opacity: .8;
 }
 
 .Header-menu-icon i {
   display: block;
-}
-
-.Header-user {
-  position: absolute;
-  top: 30px;
-  right: 20px;
-  font-size: 1.6rem;
-  cursor: pointer;
 }
 
 .Header-logo {

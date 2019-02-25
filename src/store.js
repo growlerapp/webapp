@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     loading: true,
     userData: {},
-    isMenuActive: false
+    isMenuActive: false,
+    isInStore: false
   },
 
   mutations: {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setMenu (state, value) {
       state.isMenuActive = value
+    },
+    setInStore (state, value) {
+      state.isInStore = value
     }
   }
 })
