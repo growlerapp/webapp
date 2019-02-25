@@ -2,9 +2,6 @@
   <router-link :to="'/store/' + id">
     <div class="StoreItem">
       <div class="StoreItem-header">
-        <!-- <div class="StoreItem-header-left">
-          <i class="ico-growler"></i>
-        </div>-->
         <div class="StoreItem-header-right">
           <div class="StoreItem-meta">
             <div class="StoreItem-meta-name">{{name}}</div>
@@ -83,6 +80,7 @@ export default {
 
 .StoreItem-meta {
   font-size: 0.9rem;
+  margin-top: 2px;
 }
 
 .StoreItem-meta i {
@@ -118,7 +116,7 @@ export default {
 .StoreItem-header-status {
   position: absolute;
   right: 0;
-  bottom: 15px;
+  top: 16px;
   font-family: var(--font-family-primary);
   font-weight: bold;
   text-transform: uppercase;
