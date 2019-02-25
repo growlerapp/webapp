@@ -4,7 +4,41 @@
 
     <transition name="fade">
       <div v-if="store">
-        <div class="Store-map" :style="{backgroundImage: 'url(' + getStaticMap + ')'}"></div>
+        <div
+          class="Store-map"
+          :class="{'isFullScreen' : isFullScreenMap}"
+          :style="{backgroundImage: 'url(' + getStaticMap + ')'}"
+          @click="isFullScreenMap = true"
+        >
+          <transition name="fade">
+            <template v-if="isFullScreenMap">
+              <GmapMap
+                :center="{
+                  lat: store.geometry.coordinates[1],
+                  lng: store.geometry.coordinates[0]
+                }"
+                :zoom="17"
+                map-type-id="terrain"
+              >
+                <GmapMarker
+                  :position="{
+                    lat: store.geometry.coordinates[1],
+                    lng: store.geometry.coordinates[0]
+                  }"
+                  :clickable="false"
+                  :draggable="false"
+                />
+              </GmapMap>
+            </template>
+          </transition>
+
+          <div
+            class="Store-map-bottom"
+            @click.stop="isFullScreenMap = false"
+          >
+            Cerrar mapa
+          </div>
+        </div>
 
         <div class="Store-body">
           <StoreItemFull
@@ -89,7 +123,8 @@ export default {
   },
 
   data: () => ({
-    store: null
+    store: null,
+    isFullScreenMap: false
   }),
 
   mounted () {
@@ -108,6 +143,12 @@ export default {
         const storeLong = this.store.geometry.coordinates[0]
         return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=17&size=400x300&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
       }
+    }
+  },
+
+  methods: {
+    toggleMap () {
+      this.isFullScreenMap = !this.isFullScreenMap
     }
   },
 
@@ -147,6 +188,12 @@ export default {
   height: 300px;
   position: relative;
   overflow: hidden;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.Store-map.isFullScreen {
+  height: 100vh;
 }
 
 .Store-map:after {
@@ -159,8 +206,36 @@ export default {
   background: linear-gradient(to bottom, transparent 0%, #fafbf1);
 }
 
+.Store-map.isFullScreen:after {
+  display: none;
+}
+
 .Store-map-image {
   max-width: 100%;
+}
+
+.Store-map-bottom {
+  height: 60px;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  opacity: 0;
+  transition: all .2s ease;
+  transform: translateY(100%);
+}
+
+.Store-map.isFullScreen .Store-map-bottom {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .Store-sep {
@@ -204,5 +279,10 @@ export default {
 
 .Store-footer-hop {
   width: 40px;
+}
+
+.Store-map .vue-map-container {
+  width: 100%;
+  height: calc(100vh - 108px);
 }
 </style>
