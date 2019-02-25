@@ -8,7 +8,7 @@
           class="Store-map"
           :class="{'isFullScreen' : isFullScreenMap}"
           :style="{backgroundImage: 'url(' + getStaticMap + ')'}"
-          @click="isFullScreenMap = true"
+          @click="!isFullScreenMap ? toggleFullScreenMap() : false"
         >
           <transition name="fade">
             <template v-if="isFullScreenMap">
@@ -34,7 +34,7 @@
 
           <div
             class="Store-map-bottom"
-            @click.stop="isFullScreenMap = false"
+            @click.stop="toggleFullScreenMap()"
           >
             Cerrar mapa
           </div>
@@ -147,8 +147,16 @@ export default {
   },
 
   methods: {
-    toggleMap () {
+    toggleFullScreenMap () {
       this.isFullScreenMap = !this.isFullScreenMap
+
+      if (this.isFullScreenMap === true) {
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+      } else {
+        document.getElementsByTagName('body')[0].style.overflow = 'auto'
+      }
+
+      window.scrollTo(0, 0)
     }
   },
 
