@@ -2,9 +2,7 @@
   <div class="Home">
     <loading v-if="!stores"/>
 
-    <div
-      v-if="stores"
-      class="Home-body">
+    <transition-group name="fade" tag="div" class="Home-body" appear>
       <StoreItem
         v-for="item in stores"
         :key="item._id"
@@ -14,7 +12,7 @@
         :distance="item.distance.text"
         :image="item.image"
       />
-    </div>
+    </transition-group>
   </div>
 </template>
 
