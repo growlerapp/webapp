@@ -132,6 +132,7 @@ export default {
 <style>
 .Store-body {
   padding: 20px;
+  margin-top: -80px;
 }
 
 .Store-name {
@@ -140,7 +141,7 @@ export default {
 }
 
 .Store-map {
-  /* background-image: url(~@/assets/img/img-map.jpg); */
+  background-image: url(/img/img-map.jpg);
   background-position: 50%;
   background-size: cover;
   height: 300px;
@@ -148,15 +149,15 @@ export default {
   overflow: hidden;
 }
 
-/* .Store-map:after {
+.Store-map:after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 200px;
-  background: linear-gradient(to bottom, transparent 40%, #fafbf1);
-} */
+  background: linear-gradient(to bottom, transparent 0%, #fafbf1);
+}
 
 .Store-map-image {
   max-width: 100%;
