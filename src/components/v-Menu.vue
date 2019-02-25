@@ -116,7 +116,7 @@ export default {
   height: 100%;
   background-size: contain;
   z-index: 1;
-  right: -5px;
+  right: -7px;
   bottom: 0;
 }
 
