@@ -5,22 +5,17 @@ query findByProximity(
   findByProximity(
     latitude: $latitude
     longitude: $longitude
-    mode: driving,
-    units: metric,
-    time_type: departure_time,
-    time_value: "now"
-    max_distance: 200000
   ) {
     _id
     name
     address
-    distance {
-      text
-      value
-    },
-    duration {
-      text
-      value
+    matrix(
+      latitude: $latitude
+      longitude: $longitude
+    ) {
+      distance
+      duration
+      mode
     }
   }
 }

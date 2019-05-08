@@ -14,7 +14,7 @@
           :id="item._id"
           :name="item.name"
           :address="item.address"
-          :distance="item.distance.text"
+          :distance="item.matrix.distance"
         />
       </pull-to>
 
@@ -70,7 +70,11 @@ export default {
           longitude: data ? data.long : this.$store.state.userData.long,
         },
       }).then((result) => {
-        this.stores = result.data.findByProximity
+        this.stores = result.data.findByProximity.map(growler => {
+          const copy = Object.assign({}, growler)
+          copy.matrix = growler.matrix.find(({ mode }) => mode === 'driving')
+          return copy
+        })
       }).catch(() => {
         // console.error(error)
       })
