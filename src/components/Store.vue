@@ -8,10 +8,10 @@
           Dirección: {{ store.address }}
         </div>
         <div>
-          Distancia: {{ store.distance.text }}
+          Distancia: {{ store.matrix.distance }}
         </div>
         <div>
-          Tiempo: {{ store.duration.text }}
+          Tiempo: {{ store.matrix.duration }}
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import STORE from '/src/graphql/FindByOne.graphql'
+import STORE from '/src/graphql/FindOne.graphql'
 
 export default {
   name: 'Store',
@@ -42,10 +42,12 @@ export default {
           longitude: this.$store.state.userData.long,
         },
       }).then((result) => {
-        this.store = result.data.findByProximity[0]
+        const copy = Object.assign({}, result.data.findOne)
+        copy.matrix = copy.matrix.find(({ mode }) => mode === 'driving')
+        this.store = copy
         console.log
-      }).catch(() => {
-        // console.error(error)
+      }).catch((error) => {
+        console.error(error)
       })
     }
   },
