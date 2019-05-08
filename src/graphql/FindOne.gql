@@ -9,6 +9,9 @@ query findOne(
     _id
     name
     address
+    geometry {
+      coordinates
+    }
     matrix(
       latitude: $latitude
       longitude: $longitude
