@@ -8,10 +8,8 @@
           </router-link>
           <div class="StoreItem-meta-address" v-text="address"></div>
         </div>
-
         <div class="StoreItem-meta StoreItem-meta--right">
           <div class="Store-meta-distance" v-text="distance"></div>
-
           <div class="StoreItem-action">
             <router-link
               :to="{ name: 'store', params: { id: id }}"
@@ -23,14 +21,6 @@
                 c0,0.553,0.447,1,1,1h4c0.553,0,1-0.447,1-1v-8h8c0.553,0,1-0.447,1-1v-4C24,9.447,23.553,9,23,9z"/>
               </svg>
             </router-link>
-
-            <div class="StoreItem-btn">
-              <svg version="1.1" x="0px" y="0px"
-                width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-              <path d="M12,0C7.6,0,3,3.4,3,9c0,5.3,8,13.4,8.3,13.7c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3C13,22.4,21,14.3,21,9
-                C21,3.4,16.4,0,12,0z M12,12c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S13.7,12,12,12z"/>
-              </svg>
-            </div>
           </div>
         </div>
       </div>
@@ -42,17 +32,11 @@
 export default {
   name: 'StoreItem',
 
-  props: [
-    'id',
-    'name',
-    'address',
-    'distance',
-  ],
+  props: ['id', 'name', 'address', 'distance'],
 
-  data: () => ({
-  }),
+  data: () => ({}),
 
-  methods: {}
+  methods: {},
 }
 </script>
 
@@ -60,6 +44,12 @@ export default {
 .StoreItem {
   padding: 20px 0;
   border-bottom: 1px solid var(--color-yellow);
+}
+
+@media (--lg-viewport) {
+  .StoreItem {
+    border: 0;
+  }
 }
 
 .StoreItem a {

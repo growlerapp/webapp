@@ -1,7 +1,4 @@
-query findByProximity(
-    $latitude: Float!
-    $longitude: Float!
-  ){
+query findByProximity($latitude: Float!, $longitude: Float!) {
   findByProximity(
     latitude: $latitude
     longitude: $longitude
