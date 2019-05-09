@@ -4,11 +4,11 @@
 
     <loading v-if="!stores"/>
 
-    <div 
-      v-if="stores" 
+    <div
+      v-if="stores"
       class="Home-body">
-      <vue-pull-refresh 
-        :on-refresh="refresh()" 
+      <vue-pull-refresh
+        :on-refresh="refresh()"
         :config="refreshConfig">
         <h2 class="Home-title">Los bares más cercanos para llenar tu growler son:</h2>
         <div class="Home-list">
@@ -18,7 +18,7 @@
             :id="item._id"
             :name="item.name"
             :address="item.address"
-            :distance="item.distance.text"
+            :distance="item.matrix.distance"
           />
         </div>
       </vue-pull-refresh>
@@ -73,7 +73,11 @@ export default {
           },
         })
         .then(result => {
-          this.stores = result.data.findByProximity
+          this.stores = result.data.findByProximity.map(growler => {
+            const copy = Object.assign({}, growler)
+            copy.matrix = growler.matrix.find(({ mode }) => mode === 'driving')
+            return copy
+          })
         })
         .catch(error => {
           console.error(error) // eslint-disable-line

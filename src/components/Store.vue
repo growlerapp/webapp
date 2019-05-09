@@ -9,10 +9,10 @@
           Dirección: {{ store.address }}
         </p>
         <p>
-          Distancia: {{ store.distance.text }}
+          Distancia: {{ store.matrix.distance }}
         </p>
         <p>
-          Tiempo: {{ store.duration.text }} (auto)
+          Tiempo: {{ store.matrix.duration }} (auto)
         </p>
         <div class="Store-map">
           <GmapMap
@@ -42,7 +42,7 @@ import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Loading from '/src/components/Loading'
 
-import STORE_QUERY from '/src/graphql/FindByOne.gql'
+import STORE_QUERY from '/src/graphql/FindOne.gql'
 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -79,7 +79,11 @@ export default {
             longitude: this.$store.state.userData.long,
           },
         })
-        .then(result => (this.store = result.data.findByProximity[0]))
+        .then(result => {
+          const copy = Object.assign({}, result.data.findOne)
+          copy.matrix = copy.matrix.find(({ mode }) => mode === 'driving')
+          this.store = copy
+        })
     },
   },
 }
