@@ -4,7 +4,7 @@
       <div class="App-bg"></div>
       <v-header v-if="$route.name !== 'splash'"/>
       <transition name="fade">
-        <router-view/>
+        <router-view />
       </transition>
     </div>
   </div>
@@ -112,12 +112,10 @@ h3 {
 
 /*fade*/
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .4s;
 }
-
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
