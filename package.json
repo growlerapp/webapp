@@ -7,7 +7,8 @@
     "start": "npm run serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "generate-icons": "icon-font-generator icons/svg/*.svg -o public/icons --prefix ico --csstp icons/css.hbs --htmltp icons/html.hbs --fontspath ./"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.4.3",
@@ -40,7 +41,8 @@
     "eslint-plugin-prettier": "^3.0.1",
     "graphql-tag": "^2.10.1",
     "lint-staged": "^8.1.4",
-    "vue-template-compiler": "^2.6.7"
+    "vue-template-compiler": "^2.6.7",
+    "icon-font-generator": "^2.1.8"
   },
   "eslintConfig": {
     "root": true,
