@@ -193,7 +193,7 @@ export default {
   background-image: url(/img/img-map.jpg);
   background-position: 50%;
   background-size: cover;
-  height: 300px;
+  height: 340px;
   position: relative;
   overflow: hidden;
   transition: all .3s ease;
@@ -210,7 +210,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 250px;
+  height: 160px;
   background-image: url(/img/img-map-mask.png);
   background-repeat: repeat-x;
   /* background: linear-gradient(to bottom, transparent 0%, #fafbf1); */
