@@ -1,100 +1,144 @@
 <template>
-  <div class="StoreItem">
-    <div class="StoreItem-body">
-      <div class="StoreItem-meta">
-        <div class="StoreItem-meta StoreItem-meta--left">
-          <router-link :to="{ name: 'store', params: { id: id }}">
-            <h3 class="StoreItem-meta-name" v-text="name"></h3>
-          </router-link>
-          <div class="StoreItem-meta-address" v-text="address"></div>
-        </div>
-        <div class="StoreItem-meta StoreItem-meta--right">
-          <div class="Store-meta-distance" v-text="distance"></div>
-          <div class="StoreItem-action">
-            <router-link
-              :to="{ name: 'store', params: { id: id }}"
-              class="StoreItem-btn"
-            >
-              <svg version="1.1" x="0px" y="0px"
-                width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-              <path d="M23,9h-8V1c0-0.553-0.447-1-1-1h-4C9.447,0,9,0.447,9,1v8H1c-0.553,0-1,0.447-1,1v4c0,0.553,0.447,1,1,1h8v8
-                c0,0.553,0.447,1,1,1h4c0.553,0,1-0.447,1-1v-8h8c0.553,0,1-0.447,1-1v-4C24,9.447,23.553,9,23,9z"/>
-              </svg>
-            </router-link>
+  <router-link :to="'/store/' + id">
+    <div class="StoreItem">
+      <div class="StoreItem-header">
+        <div class="StoreItem-header-right">
+          <div class="StoreItem-meta">
+            <div class="StoreItem-meta-name">{{name}}</div>
+            <div class="StoreItem-meta-address">
+              <i class="ico-location"></i>
+              <span>{{address}}</span>
+            </div>
+            <div class="StoreItem-meta-distance">
+              <i class="ico-location-gps"></i>
+              <span>{{distance.replace(',', '.')}}</span>
+            </div>
+          </div>
+          <div class="StoreItem-header-status">
+            <i class="ico-time"></i>
+            <span>Abierto</span>
           </div>
         </div>
       </div>
+      <div class="StoreItem-image" :style="{ 'background-image': 'url(' + imagePlaceholder + ')' }"></div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: 'StoreItem',
 
-  props: ['id', 'name', 'address', 'distance'],
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    address: {
+      type: String,
+      required: true
+    },
+    distance: {
+      type: String
+    }
+  },
 
-  data: () => ({}),
+  data: () => ({
+    imagePlaceholder: '/img/img-bar.jpg'
+  }),
 
-  methods: {},
+  methods: {}
 }
 </script>
 
 <style>
 .StoreItem {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--color-yellow);
+  margin: 20px;
 }
 
-@media (--lg-viewport) {
-  .StoreItem {
-    border: 0;
-  }
+.StoreItem-header {
+  padding: 10px 0;
+  position: relative;
+  display: flex;
 }
 
-.StoreItem a {
-  color: inherit;
+.StoreItem-header-left {
+  opacity: 0.6;
 }
 
-.StoreItem:last-child {
-  border: 0;
+.StoreItem-header-left i {
+  font-size: 4.4rem;
+  line-height: 0;
 }
 
-.StoreItem-body > .StoreItem-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1em;
+.StoreItem-meta {
+  font-size: 0.9rem;
+  margin-top: 2px;
 }
 
-.StoreItem-meta--right {
-  text-align: right;
-  margin-top: 10px;
+.StoreItem-meta i {
+  vertical-align: -3px;
+  font-size: 1rem;
+  margin-right: 4px;
+  color: var(--color-red);
 }
 
 .StoreItem-meta-name {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  margin-top: 0;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
 }
 
-.StoreItem-action {
-  margin-top: 60px;
+.StoreItem-meta-address {
+  margin-bottom: 2px;
 }
 
-.StoreItem-btn {
-  background-color: var(--color-yellow);
-  color: var(--color-white);
-  padding: 4px;
-  width: 30px;
-  height: 30px;
-  line-height: 3.2;
-  text-align: center;
-  display: inline-block;
-  border-radius: 2px;
+.StoreItem-meta-distance {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.StoreItem-btn svg {
-  fill: #fff;
-  width: 20px;
+.StoreItem-meta-distance i {
+  font-size: 0.9rem;
+}
+
+.StoreItem-header-status {
+  position: absolute;
+  right: 0;
+  top: 16px;
+  font-family: var(--font-family-primary);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-green);
+  font-size: 0.8rem;
+}
+
+.StoreItem-header-status i {
+  vertical-align: -2px;
+}
+
+.StoreItem-header-status span {
+  letter-spacing: 0.4px;
+  margin-left: 4px;
+}
+
+.StoreItem-image {
+  height: 200px;
+  background-size: cover;
+  background-position: 50%;
+  background-image: url(../assets/img/img-bar.jpg);
+  border-radius: var(--border-radius-base);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -1,45 +1,134 @@
 {
   "name": "@growlerapp/webapp",
   "version": "0.1.0",
-  "description": "Growler App, web version",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "parcel index.html",
-    "format": "prettier-standard src/*.{js,vue}",
-    "build": "rm -rf {.cache,dist} && parcel build index.html --no-cache --no-minify"
+    "serve": "vue-cli-service serve",
+    "start": "npm run serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "generate-icons": "icon-font-generator icons/svg/*.svg -o public/icons --prefix ico --csstp icons/css.hbs --htmltp icons/html.hbs --fontspath ./"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "apollo-cache-inmemory": "1.2.1",
-    "apollo-client": "2.3.1",
-    "apollo-link": "1.2.2",
-    "apollo-link-http": "1.5.4",
-    "components": "0.1.0",
-    "css-loader": "0.28.11",
-    "graphql": "0.13.2",
-    "postcss-cssnext": "3.1.0",
-    "postcss-modules": "1.1.0",
-    "vue": "2.5.16",
-    "vue-apollo": "3.0.0-beta.10",
-    "vue-pull-refresh": "0.2.7",
-    "vue-router": "3.0.1",
-    "vue2-google-maps": "0.9.7",
-    "vuex": "3.0.1"
+    "apollo-cache-inmemory": "^1.4.3",
+    "apollo-client": "^2.4.13",
+    "apollo-link-http": "^1.5.11",
+    "graphql": "^14.1.1",
+    "postcss-cssnext": "^3.1.0",
+    "register-service-worker": "^1.6.2",
+    "v-click-outside": "^2.0.2",
+    "vue": "^2.6.7",
+    "vue-apollo": "^3.0.0-beta.28",
+    "vue-pull-refresh": "^0.2.7",
+    "vue-router": "^3.0.2",
+    "vue2-google-maps": "^0.10.6",
+    "vue2-hammer": "^2.1.2",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "1.2.1",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-runtime": "6.26.0",
-    "eslint": "4.19.1",
-    "eslint-plugin-vue": "4.5.0",
-    "graphql-tag": "2.9.2",
-    "parcel-bundler": "1.8.1",
-    "postcss-import": "11.1.0",
-    "postcss-url": "7.3.2",
-    "prettier-standard": "8.0.1",
-    "vue-hot-reload-api": "2.3.0",
-    "vue-template-compiler": "2.5.16"
+    "@vue/cli-plugin-babel": "^3.4.1",
+    "@vue/cli-plugin-eslint": "^3.4.1",
+    "@vue/cli-plugin-pwa": "^3.4.1",
+    "@vue/cli-plugin-unit-jest": "^3.4.1",
+    "@vue/cli-service": "^3.4.1",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-graphql": "^3.0.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "graphql-tag": "^2.10.1",
+    "lint-staged": "^8.1.4",
+    "vue-template-compiler": "^2.6.7",
+    "icon-font-generator": "^2.1.8"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-cssnext": {
+        "features": {
+          "autoprefixer": false,
+          "customProperties": {
+            "variables": {
+              "color-base": "#2c332d",
+              "color-black": "#30322f",
+              "color-white": "#ffffff",
+              "color-blue": "#67bcf2",
+              "color-yellow": "#eaa74c",
+              "color-green": "#48ba2b",
+              "color-red": "#ff6666",
+              "border-radius-base": "6px",
+              "font-family-primary": "Prompt, Helvetica, Arial, sans-serif",
+              "font-family-normal": "'EB Garamond'",
+              "color-background": "#fafbf1"
+            }
+          },
+          "customMedia": {
+            "extensions": {
+              "--sm-viewport": "(min-width: 24em)",
+              "--md-viewport": "(min-width: 46.8em)",
+              "--lg-viewport": "(min-width: 50em)",
+              "--xl-viewport": "(min-width: 60em)"
+            }
+          }
+        }
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))"
+    ]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }
