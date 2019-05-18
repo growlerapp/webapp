@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="StoreItem-image" :style="{ 'background-image': 'url(' + imagePlaceholder + ')' }"></div>
+      <div class="StoreItem-image" :style="{ 'background-image': 'url(' + getPhoto(photo) + ')' }"></div>
     </div>
   </router-link>
 </template>
@@ -34,7 +34,7 @@ export default {
       type: String,
       required: true
     },
-    image: {
+    photo: {
       type: String
     },
     name: {
@@ -51,11 +51,11 @@ export default {
     }
   },
 
-  data: () => ({
-    imagePlaceholder: '/img/img-bar.jpg'
-  }),
-
-  methods: {}
+  methods: {
+    getPhoto (photo) {
+      return photo && photo.length ? photo : '/img/img-bar.jpg'
+    }
+  }
 }
 </script>
 

@@ -1,4 +1,8 @@
-query findByProximity($latitude: Float!, $longitude: Float!) {
+query findByProximity(
+  $latitude: Float!,
+  $longitude: Float!,
+  $googleMapsKey: String!
+) {
   findByProximity(
     latitude: $latitude
     longitude: $longitude
@@ -6,6 +10,11 @@ query findByProximity($latitude: Float!, $longitude: Float!) {
     _id
     name
     address
+    place {
+      photo(
+        key: $googleMapsKey
+      )
+    }
     matrix(
       latitude: $latitude
       longitude: $longitude
