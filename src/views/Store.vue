@@ -1,9 +1,9 @@
 <template>
   <div class="Store">
-    <loading v-if="!store"/>
+    <loading v-if="!findOne"/>
 
     <transition name="fade">
-      <div v-if="store">
+      <div v-if="findOne">
         <div
           class="Store-map"
           :class="{'isFullScreen' : isFullScreenMap}"
@@ -14,16 +14,16 @@
             <template v-if="isFullScreenMap">
               <GmapMap
                 :center="{
-                  lat: store.geometry.coordinates[1],
-                  lng: store.geometry.coordinates[0]
+                  lat: findOne.geometry.coordinates[1],
+                  lng: findOne.geometry.coordinates[0]
                 }"
                 :zoom="17"
                 map-type-id="terrain"
               >
                 <GmapMarker
                   :position="{
-                    lat: store.geometry.coordinates[1],
-                    lng: store.geometry.coordinates[0]
+                    lat: findOne.geometry.coordinates[1],
+                    lng: findOne.geometry.coordinates[0]
                   }"
                   :clickable="false"
                   :draggable="false"
@@ -42,9 +42,9 @@
 
         <div class="Store-body" v-show="!isFullScreenMap">
           <StoreItemFull
-            :name="store.name"
-            :address="store.address"
-            :distance="store.distance.text"
+            :name="findOne.name"
+            :address="findOne.address"
+            :distance="getMatrix(findOne.matrix, 'driving', 'distance')"
           />
 
           <div class="Store-arriving">
@@ -53,26 +53,26 @@
             <div class="Store-arriving-list">
               <div>
                 <i class="ico-walking"></i>
-                <div>20 min</div>
+                <div>{{ getMatrix(findOne.matrix, 'walking', 'duration') }}</div>
               </div>
-              <div>
+              <!-- <div>
                 <i class="ico-cycling"></i>
                 <div>10 min</div>
-              </div>
+              </div> -->
               <div>
                 <i class="ico-bus"></i>
-                <div>6 min</div>
+                <div>{{ getMatrix(findOne.matrix, 'transit', 'duration') }}</div>
               </div>
               <div>
                 <i class="ico-car"></i>
-                <div>4 min</div>
+                <div>{{ getMatrix(findOne.matrix, 'driving', 'duration') }}</div>
               </div>
             </div>
           </div>
 
           <img class="Store-sep" src="/img/img-separator.svg" alt="sep">
 
-          <div class="Store-types">
+          <!-- <div class="Store-types">
             <div class="u-title">Tipos de cervezas</div>
 
             <div class="Store-types-list">
@@ -89,7 +89,7 @@
             <div class="u-title">Valores</div>
 
             <div>Entre $3000 y $6000 pesos por litro</div>
-          </div>
+          </div> -->
         </div>
 
         <div class="Store-footer" v-show="!isFullScreenMap">
@@ -103,7 +103,7 @@
 <script>
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
-import FIND_BY_ONE from '@/graphql/FindByOne.gql'
+import FIND_ONE from '@/graphql/FindOne.gql'
 import Loading from '@/components/Loading'
 import StoreItemFull from '@/components/StoreItemFull'
 
@@ -123,7 +123,7 @@ export default {
   },
 
   data: () => ({
-    store: null,
+    findOne: null,
     isFullScreenMap: false
   }),
 
@@ -135,18 +135,37 @@ export default {
     this.$store.commit('setInStore', false)
   },
 
+  apollo: {
+    findOne: {
+      query: FIND_ONE,
+      variables () {
+        return {
+          id: this.$route.params.id,
+          latitude: this.$store.state.userData.lat,
+          longitude: this.$store.state.userData.long
+        }
+      }
+    }
+  },
+
   computed: {
     getStaticMap () {
-      if (this.store) {
+      if (this.findOne) {
         const googleMapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
-        const storeLat = this.store.geometry.coordinates[1]
-        const storeLong = this.store.geometry.coordinates[0]
-        return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=17&size=500x400&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
+        const storeLat = this.findOne.geometry.coordinates[1]
+        const storeLong = this.findOne.geometry.coordinates[0]
+        const width = '800'
+        const height = '600'
+        return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=18&size=${width}x${height}&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
       }
     }
   },
 
   methods: {
+    getMatrix (data, mode, param) {
+      return data.find(({ mode }) => mode)[param]
+    },
+
     toggleFullScreenMap () {
       this.isFullScreenMap = !this.isFullScreenMap
 
@@ -157,22 +176,6 @@ export default {
       }
 
       window.scrollTo(0, 0)
-    }
-  },
-
-  apollo: {
-    store: {
-      query: FIND_BY_ONE,
-      variables () {
-        return {
-          id: this.$route.params.id,
-          latitude: this.$store.state.userData.lat,
-          longitude: this.$store.state.userData.long
-        }
-      },
-      update (result) {
-        return result.findByProximity[0]
-      }
     }
   }
 }

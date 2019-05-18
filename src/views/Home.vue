@@ -1,16 +1,22 @@
 <template>
   <div class="Home">
-    <loading v-if="!stores"/>
+    <loading v-if="!findByProximity"/>
 
-    <transition-group name="fade" tag="div" class="Home-body" appear>
+    <transition-group
+      v-if="findByProximity"
+      name="fade"
+      tag="div"
+      class="Home-body"
+      appear
+    >
       <StoreItem
-        v-for="item in stores"
-        :key="item._id"
-        :id="item._id"
-        :name="item.name"
-        :address="item.address"
-        :distance="item.distance.text"
-        :image="item.image"
+        v-for="store in findByProximity"
+        :key="store._id"
+        :id="store._id"
+        :name="store.name"
+        :address="store.address"
+        :distance="store.matrix.distance"
+        :image="store.image"
       />
     </transition-group>
   </div>
@@ -20,7 +26,6 @@
 import FIND_BY_PROXIMITY from '@/graphql/FindByProximity.gql'
 import StoreItem from '@/components/StoreItem'
 import Loading from '@/components/Loading'
-import user from '@/user'
 
 export default {
   name: 'Home',
@@ -30,35 +35,22 @@ export default {
     Loading
   },
 
-  data: () => ({
-    stores: null
-  }),
-
-  mounted () {
-    this.refresh()
-  },
-
-  methods: {
-    refresh () {
-      setTimeout(async () => {
-        const data = await user.getUserGeo()
-        this.findAll(data)
-      })
-    },
-
-    findAll (data) {
-      this.$apollo
-        .query({
-          query: FIND_BY_PROXIMITY,
-          variables: {
-            latitude: data ? data.lat : this.$store.state.userData.lat,
-            longitude: data ? data.long : this.$store.state.userData.long
-          }
+  apollo: {
+    findByProximity: {
+      query: FIND_BY_PROXIMITY,
+      variables () {
+        return {
+          latitude: this.$store.state.userData.lat,
+          longitude: this.$store.state.userData.long
+        }
+      },
+      update ({ findByProximity }) {
+        return findByProximity.map(store => {
+          const copy = Object.assign({}, store)
+          copy.matrix = store.matrix.find(({ mode }) => mode === 'driving')
+          return copy
         })
-        .then(({ data: { findByProximity } }) => (this.stores = findByProximity))
-        .catch(error => {
-          console.error(error) // eslint-disable-line
-        })
+      }
     }
   }
 }
