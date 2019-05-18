@@ -46,7 +46,8 @@ export default {
       required: true
     },
     distance: {
-      type: String
+      type: String,
+      required: true
     }
   },
 
