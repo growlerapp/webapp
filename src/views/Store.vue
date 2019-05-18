@@ -45,6 +45,7 @@
             :name="findOne.name"
             :address="findOne.address"
             :distance="getMatrix(findOne.matrix, 'driving', 'distance')"
+            :openNow="findOne.place.schedule.openNow"
           />
 
           <div class="Store-arriving">

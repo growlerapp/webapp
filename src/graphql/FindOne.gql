@@ -9,6 +9,11 @@ query findOne(
     _id
     name
     address
+    place {
+      schedule {
+        openNow
+      }
+    }
     geometry {
       coordinates
     }

@@ -17,6 +17,7 @@
         :address="store.address"
         :distance="store.matrix.distance"
         :photo="store.place.photo"
+        :openNow="store.place.schedule.openNow"
       />
     </transition-group>
   </div>

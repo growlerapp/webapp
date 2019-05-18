@@ -1,8 +1,13 @@
 <template>
   <div class="StoreItemFull">
-    <div class="StoreItemFull-status">
+    <div
+      class="StoreItemFull-status"
+      :class="{'StoreItemFull-status--isActive': openNow}"
+    >
       <i class="ico-time"></i>
-      <span>Abierto</span>
+      <span>
+        {{ openNow ? 'Abierto' : 'Cerrado' }}
+      </span>
     </div>
     <div class="StoreItemFull-name">
       {{name}}
@@ -32,7 +37,12 @@ export default {
       required: true
     },
     distance: {
-      type: String
+      type: String,
+      required: true
+    },
+    openNow: {
+      type: Boolean,
+      required: true
     }
   },
 
@@ -100,17 +110,21 @@ export default {
   font-family: var(--font-family-primary);
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--color-green);
+  color: var(--color-red);
   font-size: 0.8rem;
 }
 
 .StoreItemFull-status i {
   vertical-align: -3px;
   font-size: .9rem;
-  color: var(--color-green);
 }
 
 .StoreItemFull-status span {
   letter-spacing: .4px;
+}
+
+.StoreItemFull-status--isActive span,
+.StoreItemFull-status--isActive i {
+  color: var(--color-green);
 }
 </style>

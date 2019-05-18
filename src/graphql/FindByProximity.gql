@@ -11,6 +11,9 @@ query findByProximity(
     name
     address
     place {
+      schedule {
+        openNow
+      }
       photo(
         key: $googleMapsKey
       )
