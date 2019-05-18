@@ -1,0 +1,24 @@
+query findOne(
+    $id: String!
+    $latitude: Float!
+    $longitude: Float!
+  ){
+  findOne(
+    _id: $id,
+  ) {
+    _id
+    name
+    address
+    geometry {
+      coordinates
+    }
+    matrix(
+      latitude: $latitude
+      longitude: $longitude
+    ) {
+      distance
+      duration
+      mode
+    }
+  }
+}
