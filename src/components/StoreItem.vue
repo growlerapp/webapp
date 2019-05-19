@@ -155,4 +155,10 @@ export default {
   border-radius: var(--border-radius-base);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
+
+@media (--lg-viewport) {
+  .StoreItem-image {
+    height: 240px;
+  }
+}
 </style>
