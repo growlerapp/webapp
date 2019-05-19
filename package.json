@@ -27,6 +27,8 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.6.1",
+    "@commitlint/config-conventional": "7.6.0",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-pwa": "^3.7.0",
@@ -40,6 +42,7 @@
     "eslint-plugin-graphql": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.0",
     "graphql-tag": "^2.10.1",
+    "husky": "2.3.0",
     "lint-staged": "^8.1.7",
     "vue-template-compiler": "^2.6.10",
     "icon-font-generator": "^2.1.10"
@@ -118,8 +121,11 @@
       "<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))"
     ]
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -129,6 +135,11 @@
     "*.vue": [
       "vue-cli-service lint",
       "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }
