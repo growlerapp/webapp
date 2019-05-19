@@ -163,8 +163,8 @@ export default {
   },
 
   methods: {
-    getMatrix (data, mode, param) {
-      return data.find(({ mode }) => mode)[param]
+    getMatrix (data, findMode, param) {
+      return data.find(({ mode }) => mode === findMode)[param]
     },
 
     toggleFullScreenMap () {
