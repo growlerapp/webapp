@@ -205,7 +205,13 @@ export default {
 }
 
 .Store-map.isFullScreen {
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .Store-map:after {
@@ -296,6 +302,6 @@ export default {
 
 .Store-map .vue-map-container {
   width: 100%;
-  height: calc(100vh - 108px);
+  height: calc(100vh - 50px);
 }
 </style>
