@@ -14,8 +14,10 @@
           </router-link>
         </li>
         <li class="Menu-item">
-          <h3>Acerca</h3>
-          <span>de GrowlerApp</span>
+          <router-link to=/about @click.native="closeMenu">
+            <h3>Acerca</h3>
+            <span>de GrowlerApp</span>
+          </router-link>
         </li>
         <li class="Menu-item">
           <h3>Agregar</h3>
