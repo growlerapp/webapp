@@ -14,13 +14,18 @@
               <span>{{distance.replace(',', '.')}}</span>
             </div>
           </div>
-          <div class="StoreItem-header-status">
+          <div
+            class="StoreItem-header-status"
+            :class="{'StoreItem-header-status--isActive': openNow}"
+          >
             <i class="ico-time"></i>
-            <span>Abierto</span>
+            <span>
+              {{ openNow ? 'Abierto' : 'Cerrado' }}
+            </span>
           </div>
         </div>
       </div>
-      <div class="StoreItem-image" :style="{ 'background-image': 'url(' + imagePlaceholder + ')' }"></div>
+      <div class="StoreItem-image" :style="{ 'background-image': 'url(' + getPhoto(photo) + ')' }"></div>
     </div>
   </router-link>
 </template>
@@ -34,7 +39,7 @@ export default {
       type: String,
       required: true
     },
-    image: {
+    photo: {
       type: String
     },
     name: {
@@ -48,14 +53,18 @@ export default {
     distance: {
       type: String,
       required: true
+    },
+    openNow: {
+      type: Boolean,
+      required: true
     }
   },
 
-  data: () => ({
-    imagePlaceholder: '/img/img-bar.jpg'
-  }),
-
-  methods: {}
+  methods: {
+    getPhoto (photo) {
+      return photo && photo.length ? photo : '/img/img-bar.jpg'
+    }
+  }
 }
 </script>
 
@@ -121,7 +130,7 @@ export default {
   font-family: var(--font-family-primary);
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--color-green);
+  color: var(--color-red);
   font-size: 0.8rem;
 }
 
@@ -131,7 +140,11 @@ export default {
 
 .StoreItem-header-status span {
   letter-spacing: 0.4px;
-  margin-left: 4px;
+}
+
+.StoreItem-header-status--isActive span,
+.StoreItem-header-status--isActive i {
+  color: var(--color-green);
 }
 
 .StoreItem-image {

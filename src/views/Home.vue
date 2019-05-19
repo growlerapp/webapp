@@ -16,7 +16,8 @@
         :name="store.name"
         :address="store.address"
         :distance="store.matrix.distance"
-        :image="store.image"
+        :photo="store.place.photo"
+        :openNow="store.place.schedule.openNow"
       />
     </transition-group>
   </div>
@@ -41,7 +42,8 @@ export default {
       variables () {
         return {
           latitude: this.$store.state.userData.lat,
-          longitude: this.$store.state.userData.long
+          longitude: this.$store.state.userData.long,
+          googleMapsKey: process.env.VUE_APP_GOOGLE_MAPS_KEY
         }
       },
       update ({ findByProximity }) {
