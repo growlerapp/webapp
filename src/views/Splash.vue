@@ -125,6 +125,14 @@ export default {
 </script>
 
 <style scoped>
+.Splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .Splash-loading {
   display: flex;
   justify-content: center;
