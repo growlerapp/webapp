@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="App" :class="{'App--alt': $route.name === 'splash'}">
     <div class="App-body">
-      <div class="App-bg"></div>
       <v-header v-if="$route.name !== 'splash'"/>
       <transition name="fade">
         <router-view />
@@ -45,20 +44,14 @@ body {
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.App-bg {
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-  opacity: 0.5;
-  background-image: url(assets/img/bgr-dirt.svg);
+  background-image: url(/img/bgr-dirt.svg);
   background-size: 300px;
-  z-index: -1;
 }
 
 .App-body {
   padding-top: 70px;
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .App--alt .App-body {
