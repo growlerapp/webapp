@@ -67,6 +67,10 @@ export default {
 }
 
 @media (--lg-viewport) {
+  .Home-body {
+    padding-top: 1em;
+  }
+
   .Home-title {
     margin: 30px 0;
   }
