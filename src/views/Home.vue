@@ -80,11 +80,8 @@ export default {
       pullToRefresh({
         container: document.querySelector('.Home'),
         animates: ptrAnimatesIos,
-        refresh () {
-          return new Promise(async (resolve) => {
-            await context.$apollo.queries.findByProximity.refetch()
-            resolve()
-          })
+        async refresh () {
+          await context.$apollo.queries.findByProximity.refetch()
         }
       })
     }
