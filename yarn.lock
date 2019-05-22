@@ -7306,6 +7306,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
+mobile-pull-to-refresh@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/mobile-pull-to-refresh/-/mobile-pull-to-refresh-0.2.1.tgz#a9d9e6f01c9f32f5eda5403d7e112fe82da523eb"
+  integrity sha512-g7QZky0qzXIidc2QUsuWfvflqKXb0SJhPcRW9Arr8VK0X0FKyBJ3vOnms8Lmk/EtnMlJ7D2T4vOvNVUxsz9NHQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -11267,12 +11272,6 @@ vue-loader@^15.7.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-pull-refresh@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/vue-pull-refresh/-/vue-pull-refresh-0.2.7.tgz#ee4025fed2c2ff32390153a0ae2fcb86d5eeded6"
-  dependencies:
-    vue "^2.0.1"
-
 vue-router@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
@@ -11314,10 +11313,6 @@ vue2-hammer@^2.1.2:
   dependencies:
     babel-runtime "^6.26.0"
     hammerjs "^2.0.8"
-
-vue@^2.0.1:
-  version "2.5.16"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
 vue@^2.6.10:
   version "2.6.10"
