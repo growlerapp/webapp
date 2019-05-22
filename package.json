@@ -43,12 +43,14 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "caniuse-lite": "1.0.30000969",
     "eslint": "5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-graphql": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "5.2.2",
     "graphql-tag": "^2.10.1",
     "husky": "2.3.0",
     "icon-font-generator": "^2.1.10",
@@ -71,6 +73,9 @@
       "parser": "babel-eslint"
     }
   },
+  "eslintIgnore": [
+    "dist"
+  ],
   "postcss": {
     "plugins": {
       "autoprefixer": {},
