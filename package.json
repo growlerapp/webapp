@@ -29,6 +29,12 @@
   "devDependencies": {
     "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
+    "@eclass/semantic-release-netlify": "1.0.0",
+    "@semantic-release/commit-analyzer": "6.1.0",
+    "@semantic-release/git": "7.0.8",
+    "@semantic-release/github": "5.2.10",
+    "@semantic-release/npm": "5.1.7",
+    "@semantic-release/release-notes-generator": "7.1.4",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-pwa": "^3.7.0",
@@ -43,9 +49,10 @@
     "eslint-plugin-prettier": "^3.1.0",
     "graphql-tag": "^2.10.1",
     "husky": "2.3.0",
+    "icon-font-generator": "^2.1.10",
     "lint-staged": "^8.1.7",
-    "vue-template-compiler": "^2.6.10",
-    "icon-font-generator": "^2.1.10"
+    "semantic-release": "15.13.12",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
@@ -141,5 +148,18 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@eclass/semantic-release-netlify"
+    ],
+    "npmPublish": false,
+    "success": false,
+    "fail": false
   }
 }
