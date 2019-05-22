@@ -124,24 +124,4 @@ export default {
     grid-column-gap: 2em;
   }
 }
-
-/* Pull to refresh styles */
-.pull-down-header {
-  background-color: transparent !important;
-}
-
-.pull-down-content {
-  color: inherit !important;
-  font-size: 12px !important;
-  max-width: 100% !important;
-  border: 0 !important;
-}
-
-.pull-down-content--icon {
-  display: none !important;
-}
-
-.pull-down-content--label {
-  margin: 0 !important;
-}
 </style>
