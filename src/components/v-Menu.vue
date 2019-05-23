@@ -19,14 +19,14 @@
             <span>de GrowlerApp</span>
           </router-link>
         </li>
-        <li class="Menu-item">
+        <li class="Menu-item is-disabled">
           <h3>Agregar</h3>
-          <span>un nuevo bar</span>
+          <span>un nuevo bar (pronto)</span>
         </li>
-        <li class="Menu-item">
+        <!-- <li class="Menu-item">
           <h3>Términos</h3>
           <span>y condiciones</span>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -132,6 +132,10 @@ export default {
   color: var(--color-white);
   list-style: none;
   padding: 20px 40px;
+}
+
+.Menu-item.is-disabled {
+  opacity: .4;
 }
 
 .Menu-item h3 {
