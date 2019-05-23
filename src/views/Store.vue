@@ -164,7 +164,8 @@ export default {
 
   methods: {
     getMatrix (data, findMode, param) {
-      return data.find(({ mode }) => mode === findMode)[param]
+      const matrix = data.find(({ mode }) => mode === findMode)
+      return matrix ? matrix[param] : 'No disponible'
     },
 
     toggleFullScreenMap () {
