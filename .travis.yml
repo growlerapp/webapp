@@ -25,6 +25,6 @@ jobs:
       node_js:
         - "12"
         - "10"
-      script: npm run test:unit
+      script: npm t
     - stage: deploy
       script: npx semantic-release

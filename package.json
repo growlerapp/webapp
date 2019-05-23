@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
+    "test": "echo 'no tests'",
     "generate-icons": "icon-font-generator icons/svg/*.svg -o public/icons --prefix ico --csstp icons/css.hbs --htmltp icons/html.hbs --fontspath ./"
   },
   "dependencies": {
