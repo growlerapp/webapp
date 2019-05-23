@@ -1,26 +1,23 @@
 <template>
-  <div
-    id="app"
-    class="App"
-    :class="{'App--alt': $route.name === 'splash'}"
-  >
-    <Header v-if="$route.name !== 'splash'"/>
-
+  <div id="app" class="App" :class="{'App--alt': $route.name === 'splash'}">
     <div class="App-body">
-      <router-view></router-view>
+      <v-header v-if="$route.name !== 'splash'"/>
+      <transition name="fade">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
 import user from '@/user'
+import vHeader from '@/components/v-Header'
 
 export default {
   name: 'App',
 
   components: {
-    Header
+    vHeader
   },
 
   async created () {
@@ -30,6 +27,8 @@ export default {
 </script>
 
 <style>
+@import "~/assets/icon/icons.css";
+
 html,
 body {
   margin: 0;
@@ -38,13 +37,25 @@ body {
 
 body {
   font-size: 14px;
-  font-family: var(--font-family-normal);
+  font-family: var(--font-family-primary);
   line-height: 1.2;
-  background: #f3f5e3;
-  color: #2c332d;
+  background: var(--color-background);
+  color: var(--color-base);
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(/img/bgr-dirt.svg);
+  background-size: 300px;
+}
+
+.App-body {
+  padding-top: 70px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.App--alt .App-body {
+  padding-top: 0;
 }
 
 button {
@@ -81,13 +92,23 @@ h3 {
   display: none;
 }
 
-.App-body {
-  margin-top: 60px;
-  padding: 20px;
+.u-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
-.App--alt .App-body {
-  margin: 0;
-  padding: 0;
+/**
+ * Vue transitions
+ */
+
+/*fade*/
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

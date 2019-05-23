@@ -1,0 +1,159 @@
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: "icons";
+    src: url("./icons.eot?9c96c917cf8abd77d2f0065e4d09cbb7?#iefix") format("embedded-opentype"),
+url("./icons.woff2?9c96c917cf8abd77d2f0065e4d09cbb7") format("woff2"),
+url("./icons.woff?9c96c917cf8abd77d2f0065e4d09cbb7") format("woff"),
+url("./icons.ttf?9c96c917cf8abd77d2f0065e4d09cbb7") format("truetype"),
+url("./icons.svg?9c96c917cf8abd77d2f0065e4d09cbb7#icons") format("svg");
+}
+
+[class^="ico-"]:before,
+[class*=" ico-"]:before {
+  font-family: "icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-arrow-left:before {
+    content: "\f101";
+}
+.ico-arrows-24px-outline-1_minimal-down:before {
+    content: "\f102";
+}
+.ico-arrows-24px-outline-1_minimal-left:before {
+    content: "\f103";
+}
+.ico-arrows-24px-outline-1_minimal-right:before {
+    content: "\f104";
+}
+.ico-arrows-24px-outline-1_minimal-up:before {
+    content: "\f105";
+}
+.ico-arrows-24px-outline-1_tail-left:before {
+    content: "\f106";
+}
+.ico-arrows-24px-outline-1_tail-right:before {
+    content: "\f107";
+}
+.ico-arrows-32px-outline-1_tail-left:before {
+    content: "\f108";
+}
+.ico-arrows-32px-outline-1_tail-right:before {
+    content: "\f109";
+}
+.ico-arrows-48px-outline-2_square-download:before {
+    content: "\f10a";
+}
+.ico-arrows-minimal-down:before {
+    content: "\f10b";
+}
+.ico-arrows-minimal-left:before {
+    content: "\f10c";
+}
+.ico-arrows-minimal-right:before {
+    content: "\f10d";
+}
+.ico-arrows-minimal-up:before {
+    content: "\f10e";
+}
+.ico-arrows-small-down:before {
+    content: "\f10f";
+}
+.ico-arrows-small-left:before {
+    content: "\f110";
+}
+.ico-arrows-small-right:before {
+    content: "\f111";
+}
+.ico-arrows-small-up:before {
+    content: "\f112";
+}
+.ico-arrows-tail-left:before {
+    content: "\f113";
+}
+.ico-arrows-tail-right:before {
+    content: "\f114";
+}
+.ico-arrows-tail-up:before {
+    content: "\f115";
+}
+.ico-beer-shop-1:before {
+    content: "\f116";
+}
+.ico-beer-shop:before {
+    content: "\f117";
+}
+.ico-bottle:before {
+    content: "\f118";
+}
+.ico-bus:before {
+    content: "\f119";
+}
+.ico-car:before {
+    content: "\f11a";
+}
+.ico-cross:before {
+    content: "\f11b";
+}
+.ico-cycling:before {
+    content: "\f11c";
+}
+.ico-dollar-circle:before {
+    content: "\f11d";
+}
+.ico-dollar:before {
+    content: "\f11e";
+}
+.ico-growler-1:before {
+    content: "\f11f";
+}
+.ico-growler:before {
+    content: "\f120";
+}
+.ico-hop:before {
+    content: "\f121";
+}
+.ico-location-compass:before {
+    content: "\f122";
+}
+.ico-location-gps:before {
+    content: "\f123";
+}
+.ico-location:before {
+    content: "\f124";
+}
+.ico-menu-dots:before {
+    content: "\f125";
+}
+.ico-pin:before {
+    content: "\f126";
+}
+.ico-time:before {
+    content: "\f127";
+}
+.ico-ui-32px-outline-3_menu-right:before {
+    content: "\f128";
+}
+.ico-ui-48px-outline-2_small-add:before {
+    content: "\f129";
+}
+.ico-ui-48px-outline-2_small-delete:before {
+    content: "\f12a";
+}
+.ico-user:before {
+    content: "\f12b";
+}
+.ico-walking:before {
+    content: "\f12c";
+}
+.ico-world:before {
+    content: "\f12d";
+}
