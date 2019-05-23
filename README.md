@@ -1,5 +1,7 @@
 # Growler App
 
+[![Build Status](https://travis-ci.org/growlerapp/webapp.svg?branch=master)](https://travis-ci.org/growlerapp/webapp)
+
 > Growler App es una aplicación que entrega información para encontrar lugares donde llenar con exquisita cerveza el formato growler.
 
 Idea de @lgaticaq @raulghm y @juanbrujo
