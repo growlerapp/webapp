@@ -152,14 +152,13 @@ export default {
 
   computed: {
     getStaticMap () {
-      if (this.findOne) {
-        const googleMapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
-        const storeLat = this.findOne.geometry.coordinates[1]
-        const storeLong = this.findOne.geometry.coordinates[0]
-        const width = '800'
-        const height = '600'
-        return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=18&size=${width}x${height}&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
-      }
+      if (!this.findOne) return 'https://via.placeholder.com/800x600.png?text=Mapa+no+disponible'
+      const googleMapsKey = process.env.VUE_APP_GOOGLE_MAPS_KEY
+      const storeLat = this.findOne.geometry.coordinates[1]
+      const storeLong = this.findOne.geometry.coordinates[0]
+      const width = '800'
+      const height = '600'
+      return `https://maps.googleapis.com/maps/api/staticmap?center=${storeLat},${storeLong}&zoom=18&size=${width}x${height}&maptype=roadmap&markers=color:red%7Clabel:Bar%7C${storeLat},${storeLong}&key=${googleMapsKey}`
     }
   },
 

@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
+    "test": "echo 'no tests'",
     "generate-icons": "icon-font-generator icons/svg/*.svg -o public/icons --prefix ico --csstp icons/css.hbs --htmltp icons/html.hbs --fontspath ./"
   },
   "dependencies": {
@@ -29,6 +30,12 @@
   "devDependencies": {
     "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
+    "@eclass/semantic-release-netlify": "1.0.0",
+    "@semantic-release/commit-analyzer": "6.1.0",
+    "@semantic-release/git": "7.0.8",
+    "@semantic-release/github": "5.2.10",
+    "@semantic-release/npm": "5.1.7",
+    "@semantic-release/release-notes-generator": "7.1.4",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-pwa": "^3.7.0",
@@ -37,14 +44,20 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
+    "caniuse-lite": "1.0.30000969",
+    "eslint": "5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-graphql": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "5.2.2",
     "graphql-tag": "^2.10.1",
     "husky": "2.3.0",
     "icon-font-generator": "^2.1.10",
     "lint-staged": "^8.1.7",
+    "prettier": "1.17.1",
+    "semantic-release": "15.13.12",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -61,6 +74,9 @@
       "parser": "babel-eslint"
     }
   },
+  "eslintIgnore": [
+    "dist"
+  ],
   "postcss": {
     "plugins": {
       "autoprefixer": {},
@@ -141,5 +157,18 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@eclass/semantic-release-netlify"
+    ],
+    "npmPublish": false,
+    "success": false,
+    "fail": false
   }
 }
