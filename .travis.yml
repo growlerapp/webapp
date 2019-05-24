@@ -27,4 +27,6 @@ jobs:
         - "10"
       script: npm t
     - stage: deploy
+      before_script:
+        - npm i -g netlify-cli
       script: npx semantic-release
