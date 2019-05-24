@@ -15,6 +15,7 @@
             </div>
           </div>
           <div
+            v-if="openNow !== null"
             class="StoreItem-header-status"
             :class="{'StoreItem-header-status--isActive': openNow}"
           >
@@ -55,7 +56,7 @@ export default {
       required: true
     },
     openNow: {
-      type: Boolean,
+      validator: prop => typeof prop === 'boolean' || prop === null,
       required: true
     }
   },

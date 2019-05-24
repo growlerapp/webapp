@@ -1,6 +1,7 @@
 <template>
   <div class="StoreItemFull">
     <div
+      v-if="openNow !== null"
       class="StoreItemFull-status"
       :class="{'StoreItemFull-status--isActive': openNow}"
     >
@@ -41,7 +42,7 @@ export default {
       required: true
     },
     openNow: {
-      type: Boolean,
+      validator: prop => typeof prop === 'boolean' || prop === null,
       required: true
     }
   },
