@@ -134,6 +134,7 @@ export default {
 
   beforeDestroy () {
     this.$store.commit('setInStore', false)
+    this.setBodyOverflow()
   },
 
   apollo: {
@@ -170,14 +171,16 @@ export default {
 
     toggleFullScreenMap () {
       this.isFullScreenMap = !this.isFullScreenMap
-
-      if (this.isFullScreenMap === true) {
-        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
-      } else {
-        document.getElementsByTagName('body')[0].style.overflow = 'auto'
-      }
-
+      this.setBodyOverflow(this.isFullScreenMap)
       window.scrollTo(0, 0)
+    },
+
+    setBodyOverflow (value) {
+      if (value) {
+        document.querySelector('body').style.overflow = 'hidden'
+      } else {
+        document.querySelector('body').style.overflow = 'auto'
+      }
     }
   }
 }
