@@ -45,7 +45,7 @@
         </template>
       </div>
 
-      <img class="Splash-growler" src="/img/img-growler-white.svg" alt="growler">
+      <img class="Splash-growler" src="/img/img-growler-cut-white.svg" alt="growler">
     </div>
   </div>
 </template>
@@ -170,7 +170,7 @@ export default {
 }
 
 .Splash-logo {
-  width: 120px;
+  width: 160px;
   margin-top: 10px;
 }
 
@@ -188,6 +188,8 @@ export default {
   margin: 0 auto;
   transform: translateY(20px);
   animation: anim-fade 1s .6s ease forwards;
+  width: 80%;
+  max-width: 300px;
 }
 
 .Splash h1 {
