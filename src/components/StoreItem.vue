@@ -152,7 +152,7 @@ export default {
   height: 200px;
   background-size: cover;
   background-position: 50%;
-  background-image: url(../assets/img/img-bar.jpg);
+  background-image: url(/img/img-bar.jpg);
   border-radius: var(--border-radius-base);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
