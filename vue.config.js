@@ -1,6 +1,17 @@
 module.exports = {
   pwa: {
-    name: 'GrowlerApp'
+    name: 'GrowlerApp',
+    themeColor: '#ff6666',
+    msTileColor: '#ff6666',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: '#ff6666',
+    iconPaths: {
+      favicon16: 'img/icons/icon-16x16.png',
+      favicon32: 'img/icons/icon-32x32.png',
+      appleTouchIcon: 'img/icons/icon-152x152.png',
+      maskIcon: 'img/icons/safari-pinned-tab.svg',
+      msTileImage: 'img/icons/mstile-150x150.png'
+    }
   },
 
   pluginOptions: {
