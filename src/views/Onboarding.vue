@@ -1,7 +1,7 @@
 <template>
   <div class="Onboarding">
     <div class="Onboarding-body">
-      <img class="Onboarding-hop" src="../assets/img/img-lupulo.svg" alt="hop">
+      <img class="Onboarding-hop" src="/img/img-hop-white.svg" alt="hop">
 
       <h2>Bienvenido a</h2>
       <h1>Growler App</h1>
