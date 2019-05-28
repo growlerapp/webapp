@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from '@/user'
 
 Vue.use(Vuex)
 
@@ -15,14 +16,21 @@ export default new Vuex.Store({
     setLoading (state, value) {
       state.loading = value
     },
-    setUserData (state, value) {
-      state.userData = value
+    async setUserGeoData (state, { force }) {
+      const data = await user.getUserData(force)
+      state.userData = data
     },
     setMenu (state, value) {
       state.isMenuActive = value
     },
     setInStore (state, value) {
       state.isInStore = value
+    }
+  },
+
+  actions: {
+    userGeoData ({ commit }, payload) {
+      commit('setUserGeoData', payload)
     }
   }
 })

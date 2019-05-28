@@ -10,7 +10,7 @@ import user from '@/user'
 Vue.use(Router)
 
 const requireUser = (to, from, next) => {
-  if (!user.checkUserData()) {
+  if (!user.checkUserGeoData()) {
     next({
       path: '/'
     })
