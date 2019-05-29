@@ -1,3 +1,5 @@
+import helpers from '@/helpers'
+
 /**
  * Get user geo from device
  * @return {Promise<Object>}
@@ -53,7 +55,8 @@ const getUserGeoDataFromStorage = () => {
  * Check if user has geo data
  */
 const checkUserGeoData = () => {
-  return !!localStorage.getItem('userGeoData')
+  const data = getUserGeoDataFromStorage()
+  return helpers.isJSON(data) && data.lat && data.long
 }
 
 /**
