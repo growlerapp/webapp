@@ -72,7 +72,7 @@ const fetchUserGeoData = async () => {
 /**
  * Get user data from storage or user device
  * @param {boolean} force
- * @return {object} user geo data
+ * @return {Promise<object>} user geo data
  */
 const getUserData = async (force = false) => {
   if (force) {
