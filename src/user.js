@@ -1,5 +1,10 @@
-// Get user geo
-const getUserGeo = () => {
+import helpers from '@/helpers'
+
+/**
+ * Get user geo from device
+ * @return {Promise<Object>}
+ */
+const getUserGeoDataFromDevice = () => {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {
       return reject(
@@ -11,40 +16,81 @@ const getUserGeo = () => {
           lat: result.coords.latitude,
           long: result.coords.longitude
         }
-
-        localStorage.setItem('userData', JSON.stringify(data))
         return resolve(data)
       })
     }
   })
 }
 
-// Set flag if user has joined to app
+/**
+ * Set flag if user has joined to app
+ */
 const setUserHasJoined = () => {
   localStorage.setItem('userHasJoined', JSON.stringify(true))
 }
 
-// Check if user has joined to app
+/**
+ * Check if user has joined to app
+ */
 const checkHasJoined = () => {
   return !!localStorage.getItem('userHasJoined')
 }
 
-// Check geo
-const checkUserData = () => {
-  return !!localStorage.getItem('userData')
+/**
+ * Set user geo data
+ * @param {object} data
+ */
+const setUserGeoDataToStorage = data => {
+  localStorage.setItem('userGeoData', JSON.stringify(data))
 }
 
-// Get user data
-const getUserData = async () => {
-  return checkUserData()
-    ? JSON.parse(localStorage.getItem('userData'))
-    : getUserGeo()
+/**
+ * Get user geo data from localstorage
+ */
+const getUserGeoDataFromStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem('userGeoData'))
+  } catch (err) {
+    return null
+  }
+}
+
+/**
+ * Check if user has geo data
+ */
+const checkUserGeoData = () => {
+  const data = getUserGeoDataFromStorage()
+  return helpers.isJSON(data) && data.lat && data.long
+}
+
+/**
+ * Fetch user geo data
+ * @return {object} user geo data
+ */
+const fetchUserGeoData = async () => {
+  const data = await getUserGeoDataFromDevice()
+  setUserGeoDataToStorage(data)
+  return data
+}
+
+/**
+ * Get user data from storage or user device
+ * @param {boolean} force
+ * @return {Promise<object>} user geo data
+ */
+const getUserData = async (force = false) => {
+  if (force) {
+    return fetchUserGeoData()
+  } else {
+    return checkUserGeoData()
+      ? getUserGeoDataFromStorage()
+      : fetchUserGeoData()
+  }
 }
 
 export default {
   getUserData,
-  checkUserData,
-  getUserGeo,
+  checkUserGeoData,
   checkHasJoined,
   setUserHasJoined
 }

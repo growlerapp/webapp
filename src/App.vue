@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import user from '@/user'
 import vHeader from '@/components/v-Header'
 
 export default {
@@ -20,8 +19,8 @@ export default {
     vHeader
   },
 
-  async created () {
-    this.$store.commit('setUserData', await user.getUserData())
+  created () {
+    this.$store.dispatch('userGeoData', { force: false })
   }
 }
 </script>

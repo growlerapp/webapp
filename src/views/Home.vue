@@ -81,6 +81,7 @@ export default {
         container: document.querySelector('.Home'),
         animates: ptrAnimatesIos,
         async refresh () {
+          context.$store.dispatch('userGeoData', { force: true })
           await context.$apollo.queries.findByProximity.refetch()
         }
       })

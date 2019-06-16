@@ -93,7 +93,7 @@ export default {
 
     async getData () {
       try {
-        await user.getUserGeo()
+        await user.getUserData()
         this.goToHome()
       } catch (e) {
         this.isGeoError = true
