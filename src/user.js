@@ -48,7 +48,11 @@ const setUserGeoDataToStorage = data => {
  * Get user geo data from localstorage
  */
 const getUserGeoDataFromStorage = () => {
-  return JSON.parse(localStorage.getItem('userGeoData'))
+  try {
+    return JSON.parse(localStorage.getItem('userGeoData'))
+  } catch (err) {
+    return null
+  }
 }
 
 /**
