@@ -29,6 +29,23 @@
           :openNow="store.place.schedule ? store.place.schedule.openNow : null"
         />
       </transition-group>
+
+      <div class="Home-empty" v-if="findByProximity && !findByProximity.length">
+        <img class="Home-empty-icon" src="/img/img-growler-empty.svg" alt="growler">
+        <h2>
+          No encontramos bares cercanos
+        </h2>
+        <p>
+          Prueba
+          <span v-show="isTouchDevice()">deslizar hacia abajo</span>
+          <span v-show="!isTouchDevice()">recargar</span>
+          para actualizar
+        </p>
+        <img class="Home-empty-sep" src="/img/img-separator.svg" alt="sep">
+        <small>
+          Próximamente podrás agregar nuevos bares que sean de tu interés
+        </small>
+      </div>
     </div>
   </div>
 </template>
@@ -85,6 +102,22 @@ export default {
           await context.$apollo.queries.findByProximity.refetch()
         }
       })
+    },
+
+    isTouchDevice () {
+      // https://stackoverflow.com/a/4819886/1832887
+      const prefixes = ' -webkit- -moz- -o- -ms- '.split(' ')
+      const mq = (query) => {
+        return window.matchMedia(query).matches
+      }
+      // eslint-disable-next-line
+      if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+        return true
+      }
+      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+      // https://git.io/vznFH
+      const query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('')
+      return mq(query)
     }
   }
 }
@@ -124,5 +157,41 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 2em;
   }
+}
+
+.Home-empty {
+  text-align: center;
+  padding-top: 4em;
+  max-width: 280px;
+  margin: 0 auto;
+}
+.Home-empty h2 {
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.Home-empty p {
+  font-size: 1.2rem;
+  font-family: var(--font-family-normal);
+}
+.Home-empty-icon {
+  max-width: 80px;
+  display: inline-block;
+  opacity: .4;
+  transform: rotate(10deg);
+}
+@media (--lg-viewport) {
+  .Home-empty-icon {
+    max-width: 120px;
+  }
+}
+.Home-empty-sep {
+  display: inline-block;
+  width: 120px;
+}
+.Home-empty small {
+  display: inline-block;
+  margin-top: 1em;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 </style>
