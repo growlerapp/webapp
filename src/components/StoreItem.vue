@@ -71,7 +71,7 @@ export default {
 
 <style>
 .StoreItem {
-  margin: 20px;
+  margin: 20px 20px 30px;
 }
 
 .StoreItem-header {
