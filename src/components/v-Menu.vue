@@ -131,7 +131,13 @@ export default {
 .Menu-list {
   color: var(--color-white);
   list-style: none;
-  padding: 20px 40px;
+  padding: 20px 30px;
+}
+
+@media (--sm-viewport) {
+  .Menu-list {
+    padding: 20px 40px;
+  }
 }
 
 .Menu-item.is-disabled {
