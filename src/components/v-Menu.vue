@@ -117,7 +117,7 @@ export default {
   position: absolute;
   top: 0px;
   width: 30px;
-  height: 100%;
+  height: 102%;
   background-size: contain;
   z-index: 1;
   right: -7px;
