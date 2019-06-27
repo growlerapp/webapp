@@ -188,8 +188,7 @@ export default {
   margin: 0 auto;
   transform: translateY(20px);
   animation: anim-fade 1s .6s ease forwards;
-  width: 80%;
-  max-width: 300px;
+  max-height: 40%;
 }
 
 .Splash h1 {
@@ -224,6 +223,10 @@ export default {
   left: 40px;
   right: 40px;
   bottom: -20px;
+}
+
+.Splash-step:nth-child(1) {
+  bottom: 10px;
 }
 
 .Splash-step.is-active {
