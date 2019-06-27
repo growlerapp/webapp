@@ -115,7 +115,7 @@ export default {
   background-image: url(/img/img-line-vertical.svg);
   background-repeat: repeat-y;
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 30px;
   height: 102%;
   background-size: contain;
