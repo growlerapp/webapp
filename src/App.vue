@@ -3,7 +3,9 @@
     <div class="App-body">
       <v-header v-if="$route.name !== 'splash'"/>
       <transition name="fade">
-        <router-view />
+        <div>
+          <router-view />
+        </div>
       </transition>
     </div>
   </div>
