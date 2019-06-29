@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style>
-@import "~/assets/icon/icons.css";
+@import "../public/icons/icons.css";
 
 html,
 body {
@@ -51,10 +51,6 @@ body {
   padding-top: 70px;
   max-width: 560px;
   margin: 0 auto;
-}
-
-.App--alt .App-body {
-  padding-top: 0;
 }
 
 button {
