@@ -15,7 +15,7 @@
     "apollo-cache-inmemory": "1.6.2",
     "apollo-client": "2.6.2",
     "apollo-link-http": "1.5.15",
-    "graphql": "14.3.1",
+    "graphql": "14.5.8",
     "mobile-pull-to-refresh": "0.2.1",
     "postcss-cssnext": "3.1.0",
     "register-service-worker": "1.6.2",
