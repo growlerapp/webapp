@@ -55,7 +55,7 @@
     "graphql-tag": "2.10.1",
     "husky": "2.4.1",
     "icon-font-generator": "2.1.10",
-    "lint-staged": "8.2.1",
+    "lint-staged": "9.4.2",
     "prettier": "1.18.2",
     "semantic-release": "15.13.16",
     "vue-template-compiler": "2.6.10"
