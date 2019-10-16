@@ -12,7 +12,6 @@
           </div>
 
           <div class="Splash-step">
-            <i class="ico-pin"></i>
             <h2>
               Encuentra los bares <br>
               más cercanos para <br>
@@ -188,7 +187,7 @@ export default {
   margin: 0 auto;
   transform: translateY(20px);
   animation: anim-fade 1s .6s ease forwards;
-  max-height: 40%;
+  max-height: 36%;
 }
 
 .Splash h1 {
@@ -222,11 +221,15 @@ export default {
   position: absolute;
   left: 40px;
   right: 40px;
-  bottom: -20px;
+  bottom: 0;
 }
 
-.Splash-step:nth-child(1) {
-  bottom: 10px;
+.Splash-step:nth-child(2) {
+  bottom: -30px;
+}
+
+.Splash-step:nth-child(2) h2 {
+  margin-bottom: 0;
 }
 
 .Splash-step.is-active {
