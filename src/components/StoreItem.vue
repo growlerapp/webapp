@@ -104,10 +104,17 @@ export default {
 .StoreItem-meta-name {
   font-family: var(--font-family-primary);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
+  margin-right: 80px;
+}
+
+@media (--sm-viewport) {
+  .StoreItem-meta-name {
+    font-size: 1.2rem;
+  }
 }
 
 .StoreItem-meta-address {
