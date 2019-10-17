@@ -87,10 +87,16 @@ export default {
 .StoreItemFull-name {
   font-family: var(--font-family-primary);
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
+}
+
+@media (--sm-viewport) {
+  .StoreItemFull-name {
+    font-size: 2rem;
+  }
 }
 
 .StoreItemFull-address {

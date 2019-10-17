@@ -36,8 +36,8 @@ export default {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   position: fixed;
-  width: 36px;
-  height: 36px;
+  width: 46px;
+  height: 46px;
   top: 50%;
   left: 50%;
   z-index: 10;
