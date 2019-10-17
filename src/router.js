@@ -4,8 +4,19 @@ import Home from '@/views/Home'
 import Splash from '@/views/Splash'
 import About from '@/views/About'
 import Store from '@/views/Store'
+import user from '@/user'
 
 Vue.use(Router)
+
+const requireUser = (to, from, next) => {
+  if (!user.checkUserGeoData()) {
+    next({
+      path: '/'
+    })
+  } else {
+    next()
+  }
+}
 
 export default new Router({
   scrollBehavior () {
@@ -30,7 +41,8 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: requireUser
     },
     {
       path: '/store/:id',

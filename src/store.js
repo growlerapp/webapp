@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getUserData } from '@/user'
+import user from '@/user'
 
 Vue.use(Vuex)
 
@@ -16,8 +16,8 @@ export default new Vuex.Store({
     setLoading (state, value) {
       state.loading = value
     },
-    async setUserGeoData (state, { force = false }) {
-      const data = await getUserData(force)
+    async setUserGeoData (state, { force }) {
+      const data = await user.getUserData(force)
       state.userData = data
     },
     setMenu (state, value) {
