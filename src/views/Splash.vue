@@ -26,10 +26,18 @@
             </div>
             <h2>Obteniendo tu ubicación...</h2>
 
-            <template v-if="isGeoError">
-              <h3>Debes autorizar la geolocalización para continuar</h3>
+            <template v-if="isGeoError !== null">
+              <template v-if="isGeoError === 0">
+                <h3>Debes autorizar la geolocalización en tu dispositivo para continuar</h3>
+              </template>
+              <template v-else-if="isGeoError === 1">
+                <h3>No podemos detectar donde te encuentras</h3>
+              </template>
+              <template v-else>
+                <h3>Ha ocurrido un error tratando de obtener tu geolocalización</h3>
+              </template>
               <div class="Splash-continue">
-                <v-button @click.native="forceReload" type="alt">Recargar</v-button>
+                <v-button @click.native="forceReload" type="alt">Reintentar</v-button>
               </div>
             </template>
           </div>
@@ -40,7 +48,7 @@
           <div class="Splash-loading">
             <loading type="relative" color="white" />
           </div>
-          <h2>Cargando datos...</h2>
+          <h2>Buscando lugares cercanos...</h2>
         </template>
       </div>
 
@@ -50,7 +58,7 @@
 </template>
 
 <script>
-import user from '@/user'
+import { checkHasJoined, setUserHasJoined, checkUserGeoData, getUserData } from '@/user'
 import Loading from '@/components/Loading'
 import vButton from '@/components/v-Button'
 
@@ -63,21 +71,30 @@ export default {
   },
 
   data: () => ({
-    isGeoError: false,
+    isGeoError: null,
     hasUserJoinedToApp: false
   }),
 
   async mounted () {
-    if (user.checkHasJoined()) {
-      this.hasUserJoinedToApp = true
-      this.goToHome()
-    } else {
-      // iniciar animaciones
-      await this.playSteps()
-      // obtener geo
-      this.getData()
-      // setear flag usuario primera vez
-      user.setUserHasJoined()
+    try {
+      if (checkHasJoined() && checkUserGeoData()) {
+        // setea flag de inicio
+        this.hasUserJoinedToApp = true
+        // redirije al home
+        await this.goToHome()
+      } else {
+        // iniciar animaciones
+        await this.playSteps()
+        // obtener geo data
+        await getUserData()
+        this.$store.dispatch('userGeoData', { force: true })
+        // setea flag de inicio
+        setUserHasJoined()
+        // redirecciona al home
+        await this.goToHome()
+      }
+    } catch (error) {
+      this.isGeoError = error.code
     }
   },
 
@@ -88,15 +105,6 @@ export default {
           resolve()
         }, time)
       })
-    },
-
-    async getData () {
-      try {
-        await user.getUserData()
-        this.goToHome()
-      } catch (e) {
-        this.isGeoError = true
-      }
     },
 
     async playSteps () {

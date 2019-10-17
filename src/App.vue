@@ -13,6 +13,7 @@
 
 <script>
 import vHeader from '@/components/v-Header'
+import { checkUserGeoData } from '@/user'
 
 export default {
   name: 'App',
@@ -21,8 +22,16 @@ export default {
     vHeader
   },
 
-  created () {
-    this.$store.dispatch('userGeoData', { force: false })
+  mounted () {
+    /**
+     * Busca si existe geo data almacenada localmente
+     * de lo contrario devuelve a splash
+     */
+    if (checkUserGeoData()) {
+      this.$store.dispatch('userGeoData', { force: false })
+    } else {
+      this.$router.push('/')
+    }
   }
 }
 </script>
