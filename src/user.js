@@ -1,25 +1,61 @@
-import helpers from '@/helpers'
+import { isJSON } from '@/helpers'
 
 /**
  * Get user geo from device
  * @return {Promise<Object>}
+ * https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
  */
 const getUserGeoDataFromDevice = () => {
   return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      return reject(
-        new Error('geo error')
-      )
-    } else {
-      navigator.geolocation.getCurrentPosition(result => {
-        const data = {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(result =>
+        resolve({
           lat: result.coords.latitude,
           long: result.coords.longitude
+        }), error => reject(parseError(error))
+      )
+      const parseError = error => {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            return {
+              code: 0,
+              message: 'User denied the request for geolocation.'
+            }
+          case error.POSITION_UNAVAILABLE:
+            return {
+              code: 1,
+              message: 'Location information is unavailable.'
+            }
+          case error.TIMEOUT:
+            return {
+              code: 2,
+              message: 'The request to get user location timed out.'
+            }
+          case error.UNKNOWN_ERROR:
+            return {
+              code: 3,
+              message: 'An unknown error occurred.'
+            }
         }
-        return resolve(data)
+      }
+    } else {
+      // eslint-disable-next-line prefer-promise-reject-errors
+      reject({
+        code: 3,
+        message: 'An unknown error occurred.'
       })
     }
   })
+}
+
+/**
+ * Fetch user geo data
+ * @return {object} user geo data
+ */
+const fetchUserGeoData = async () => {
+  const data = await getUserGeoDataFromDevice()
+  setUserGeoDataToStorage(data)
+  return data
 }
 
 /**
@@ -60,17 +96,7 @@ const getUserGeoDataFromStorage = () => {
  */
 const checkUserGeoData = () => {
   const data = getUserGeoDataFromStorage()
-  return helpers.isJSON(data) && data.lat && data.long
-}
-
-/**
- * Fetch user geo data
- * @return {object} user geo data
- */
-const fetchUserGeoData = async () => {
-  const data = await getUserGeoDataFromDevice()
-  setUserGeoDataToStorage(data)
-  return data
+  return isJSON(data) && data.lat && data.long
 }
 
 /**
@@ -78,19 +104,24 @@ const fetchUserGeoData = async () => {
  * @param {boolean} force
  * @return {Promise<object>} user geo data
  */
-const getUserData = async (force = false) => {
-  if (force) {
-    return fetchUserGeoData()
-  } else {
-    return checkUserGeoData()
-      ? getUserGeoDataFromStorage()
-      : fetchUserGeoData()
+const getUserData = (force = false) => {
+  try {
+    if (force) {
+      return fetchUserGeoData()
+    } else {
+      return checkUserGeoData()
+        ? getUserGeoDataFromStorage()
+        : fetchUserGeoData()
+    }
+  } catch (error) {
+    return error
   }
 }
 
-export default {
+export {
   getUserData,
   checkUserGeoData,
   checkHasJoined,
-  setUserHasJoined
+  setUserHasJoined,
+  fetchUserGeoData
 }

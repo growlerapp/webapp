@@ -7,10 +7,11 @@ const isJSON = json => {
     if (json && typeof json === 'object' && json !== null) {
       return true
     }
-  } catch (err) {}
-  return false
+  } catch (error) {
+    return error
+  }
 }
 
-export default {
+export {
   isJSON
 }
