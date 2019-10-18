@@ -805,13 +805,13 @@
   dependencies:
     find-up "^2.1.0"
 
-"@eclass/semantic-release-netlify@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclass/semantic-release-netlify/-/semantic-release-netlify-1.0.0.tgz#c10c1579600a7cf3c73d17728fb621b97b15af5c"
-  integrity sha512-br9Fh/jGrDBag+SJP5j0QTdbeumqI07Y+wyusGNmI92OwcRhAKTYS2OsBCdVzGnXp2ZAzNsRFtR3SA1YIpOUEA==
+"@eclass/semantic-release-netlify@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@eclass/semantic-release-netlify/-/semantic-release-netlify-1.0.2.tgz#277660342f45453f4cf2b3edfea349e2815d0a12"
+  integrity sha512-fciG3+AI4HT6Jq+SvTWH3tOEk3O/9sx/CTPX0jA84vCI4wig+qtmHVaZtqX4m95C7RwaFEgeLJAm/px9IRiogQ==
   dependencies:
     "@semantic-release/error" "^2.1.0"
-    execa "^1.0.0"
+    execa "^2.0.4"
 
 "@hapi/address@2.x.x":
   version "2.0.0"
@@ -5372,6 +5372,21 @@ execa@^2.0.3:
   integrity sha512-SwmwZZyJjflcqLSgllk4EQlMLst2p9muyzwNugKGFlpAz6rZ7M+s2nBR97GAq4Vzjwx2y9rcMcmqzojwN+xwNA==
   dependencies:
     cross-spawn "^6.0.5"
+    get-stream "^5.0.0"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^3.0.0"
+    onetime "^5.1.0"
+    p-finally "^2.0.0"
+    signal-exit "^3.0.2"
+    strip-final-newline "^2.0.0"
+
+execa@^2.0.4:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-2.1.0.tgz#e5d3ecd837d2a60ec50f3da78fd39767747bbe99"
+  integrity sha512-Y/URAVapfbYy2Xp/gb6A0E7iR8xeqOCXsuuaoMn7A5PzrXUK84E1gyiEfq0wQd/GHA6GsoHWwhNq8anb0mleIw==
+  dependencies:
+    cross-spawn "^7.0.0"
     get-stream "^5.0.0"
     is-stream "^2.0.0"
     merge-stream "^2.0.0"
