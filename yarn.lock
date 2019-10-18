@@ -9438,10 +9438,10 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-mobile-pull-to-refresh@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/mobile-pull-to-refresh/-/mobile-pull-to-refresh-0.2.1.tgz#a9d9e6f01c9f32f5eda5403d7e112fe82da523eb"
-  integrity sha512-g7QZky0qzXIidc2QUsuWfvflqKXb0SJhPcRW9Arr8VK0X0FKyBJ3vOnms8Lmk/EtnMlJ7D2T4vOvNVUxsz9NHQ==
+mobile-pull-to-refresh@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/mobile-pull-to-refresh/-/mobile-pull-to-refresh-0.2.2.tgz#6d8d4624a79a61f7435c56e0466b5d8252325504"
+  integrity sha512-fCwB9pCxcjrcvGl8+ZpExN+cw+zyHJk/c57AJMOsqRe0e+eLP3pkHa3xEua3OTdYZw+PpJ/H4bWqDzpvjRiKaA==
 
 modify-values@^1.0.0:
   version "1.0.1"

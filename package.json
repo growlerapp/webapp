@@ -16,7 +16,7 @@
     "apollo-client": "2.6.4",
     "apollo-link-http": "1.5.16",
     "graphql": "14.5.8",
-    "mobile-pull-to-refresh": "0.2.1",
+    "mobile-pull-to-refresh": "0.2.2",
     "postcss-cssnext": "3.1.0",
     "register-service-worker": "1.6.2",
     "v-click-outside": "2.1.4",
