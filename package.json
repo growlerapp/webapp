@@ -12,9 +12,9 @@
     "generate-icons": "icon-font-generator icons/svg/*.svg -o public/icons --prefix ico --csstp icons/css.hbs --htmltp icons/html.hbs --fontspath ./"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "1.6.2",
-    "apollo-client": "2.6.2",
-    "apollo-link-http": "1.5.15",
+    "apollo-cache-inmemory": "1.6.3",
+    "apollo-client": "2.6.4",
+    "apollo-link-http": "1.5.16",
     "graphql": "14.5.8",
     "mobile-pull-to-refresh": "0.2.1",
     "postcss-cssnext": "3.1.0",
