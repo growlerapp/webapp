@@ -12,10 +12,10 @@ stages:
     if: branch = master
 jobs:
   include:
-    - stage: lint
+    - stage: test
       name: eslint
       script: npm run lint
-    - stage: lint
+    - stage: test
       name: commitlint
       before_script:
         - npm i -g @commitlint/travis-cli
