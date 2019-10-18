@@ -3,11 +3,10 @@ cache:
   directories:
     - ~/.npm
 node_js:
-  - "12"
+  - "10.16.3"
 notifications:
   email: false
 stages:
-  - lint
   - test
   - name: deploy
     if: branch = master
@@ -22,11 +21,10 @@ jobs:
         - npm i -g @commitlint/travis-cli
       script: commitlint-travis
     - stage: test
-      node_js:
-        - "12"
-        - "10"
       script: npm t
     - stage: deploy
       before_script:
         - npm i -g netlify-cli
-      script: npx semantic-release
+      script:
+        - npm run build
+        - npx semantic-release
