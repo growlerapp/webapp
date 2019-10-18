@@ -33,7 +33,7 @@
     "@eclass/semantic-release-netlify": "1.0.2",
     "@semantic-release/commit-analyzer": "6.3.0",
     "@semantic-release/git": "7.0.16",
-    "@semantic-release/github": "5.5.3",
+    "@semantic-release/github": "5.5.4",
     "@semantic-release/npm": "5.2.0",
     "@semantic-release/release-notes-generator": "7.3.0",
     "@vue/cli-plugin-babel": "4.0.4",
@@ -57,7 +57,7 @@
     "icon-font-generator": "2.1.10",
     "lint-staged": "9.4.2",
     "prettier": "1.18.2",
-    "semantic-release": "15.13.24",
+    "semantic-release": "15.13.27",
     "vue-template-compiler": "2.6.10"
   },
   "eslintConfig": {
