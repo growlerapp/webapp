@@ -48,7 +48,7 @@
     "babel-jest": "24.8.0",
     "caniuse-lite": "1.0.30000999",
     "eslint": "6.5.1",
-    "eslint-config-prettier": "5.1.0",
+    "eslint-config-prettier": "6.4.0",
     "eslint-plugin-graphql": "3.0.3",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-vue": "5.2.3",
