@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import { apolloProvider } from './apollo'
+import './services/sentry'
+import { apolloProvider } from './services/apollo'
 
 Vue.config.productionTip = false
 
