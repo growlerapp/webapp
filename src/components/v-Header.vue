@@ -3,7 +3,7 @@
     <div class="Header-left">
       <transition name="fade">
         <template v-if="this.$store.state.isInStore">
-          <router-link to="/home">
+          <router-link to="/">
             <i class="ico-arrow-left"></i>
           </router-link>
         </template>

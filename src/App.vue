@@ -30,7 +30,7 @@ export default {
     if (checkUserGeoData()) {
       this.$store.dispatch('userGeoData', { force: false })
     } else {
-      this.$router.push('/')
+      this.$router.push('/welcome')
     }
   }
 }

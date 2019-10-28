@@ -125,7 +125,7 @@ export default {
 
     async goToHome () {
       await this.delay(4000)
-      this.$router.push('home')
+      this.$router.push('/')
     }
   }
 }

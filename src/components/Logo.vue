@@ -2,7 +2,7 @@
   <div class="Logo">
     <div class="Logo-body">
       <div class="Logo-icon">
-        <router-link to="/home">
+        <router-link to="/">
           <img src="/img/img-logo-white.svg" alt="growlerapp">
         </router-link>
       </div>

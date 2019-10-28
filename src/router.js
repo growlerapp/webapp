@@ -8,6 +8,8 @@ import Store from '@/views/Store'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+
   scrollBehavior () {
     return new Promise(resolve => {
       setTimeout(() => {
@@ -18,7 +20,16 @@ export default new Router({
 
   routes: [
     {
+      path: '*',
+      redirect: { path: '/' }
+    },
+    {
       path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/welcome',
       name: 'splash',
       component: Splash
     },
@@ -26,11 +37,6 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home
     },
     {
       path: '/store/:id',

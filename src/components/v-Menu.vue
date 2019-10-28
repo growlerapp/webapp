@@ -8,7 +8,7 @@
 
       <ul class="Menu-list">
         <li class="Menu-item">
-          <router-link to=/home @click.native="closeMenu">
+          <router-link to=/ @click.native="closeMenu">
             <h3>Inicio</h3>
             <span>volver</span>
           </router-link>
