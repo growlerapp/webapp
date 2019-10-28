@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from '@/user'
+import { getUserData } from '@/services/user'
 
 Vue.use(Vuex)
 
@@ -16,9 +16,8 @@ export default new Vuex.Store({
     setLoading (state, value) {
       state.loading = value
     },
-    async setUserGeoData (state, { force }) {
-      const data = await user.getUserData(force)
-      state.userData = data
+    setUserGeoData (state, value) {
+      state.userData = value
     },
     setMenu (state, value) {
       state.isMenuActive = value
@@ -29,8 +28,15 @@ export default new Vuex.Store({
   },
 
   actions: {
-    userGeoData ({ commit }, payload) {
-      commit('setUserGeoData', payload)
+    userGeoData ({ commit }, { force }) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          commit('setUserGeoData', await getUserData(force))
+          resolve(true)
+        } catch (error) {
+          reject(error)
+        }
+      })
     }
   }
 })
