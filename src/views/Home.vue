@@ -163,11 +163,10 @@ export default {
     async fetchData (loading = true, reload = false) {
       if (reload) window.location.reload(true)
       try {
-        this.loading = loading
+        await this.$store.dispatch('userGeoData', { force: true })
         this.isGeoError = null
         this.isfetchError = null
-        this.stores = null
-        await this.$store.dispatch('userGeoData', { force: true })
+        this.loading = loading
         this.$apollo.queries.stores.skip = false
         await this.$apollo.queries.stores.refetch()
       } catch (error) {
