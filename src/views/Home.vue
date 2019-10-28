@@ -61,13 +61,16 @@
         <v-button @click.native="fetchData(true, true)">Reintentar</v-button>
       </div>
 
-      <div class="Home-error" v-if="isGeoError !== null">
+      <div class="Home-error" v-if="!isfetchError && isGeoError">
         <img class="Home-error-icon" src="/img/img-growler-empty.svg" alt="growler">
-        <template v-if="isGeoError === 0">
+        <template v-if="isGeoError === 1">
           <h2>Debes autorizar la geolocalización en tu dispositivo para continuar</h2>
         </template>
-        <template v-else-if="isGeoError === 1">
+        <template v-else-if="isGeoError === 2">
           <h2>No podemos detectar donde te encuentras</h2>
+        </template>
+        <template v-else-if="isGeoError === 3">
+          <h2>Se ha excedido el tiempo para obtener tu geolocalización</h2>
         </template>
         <template v-else>
           <h2>Ha ocurrido un error tratando de obtener tu geolocalización</h2>
@@ -112,6 +115,7 @@ export default {
 
   data: () => ({
     loading: true,
+    stores: null,
     isfetchError: null,
     isGeoError: null
   }),
@@ -159,10 +163,11 @@ export default {
     async fetchData (loading = true, reload = false) {
       if (reload) window.location.reload(true)
       try {
-        await this.$store.dispatch('userGeoData', { force: true })
+        this.loading = loading
         this.isGeoError = null
         this.isfetchError = null
-        this.loading = loading
+        this.stores = null
+        await this.$store.dispatch('userGeoData', { force: true })
         this.$apollo.queries.stores.skip = false
         await this.$apollo.queries.stores.refetch()
       } catch (error) {

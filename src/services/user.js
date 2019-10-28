@@ -1,6 +1,31 @@
 import { isJSON } from '@/helpers'
 
 /**
+ * Parse any errors from PositionError callback
+ * @param {object} error
+ * @return {object}
+ */
+const parsePositionError = error => {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      return {
+        code: 1,
+        message: 'User denied the request for geolocation.'
+      }
+    case error.POSITION_UNAVAILABLE:
+      return {
+        code: 2,
+        message: 'Location information is unavailable.'
+      }
+    case error.TIMEOUT:
+      return {
+        code: 3,
+        message: 'The request to get user location timed out.'
+      }
+  }
+}
+
+/**
  * Get user geo from device
  * @return {Promise<Object>}
  * https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
@@ -8,42 +33,9 @@ import { isJSON } from '@/helpers'
 const getUserGeoDataFromDevice = () => {
   return new Promise((resolve, reject) => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(result =>
-        resolve({
-          lat: result.coords.latitude,
-          long: result.coords.longitude
-        }), error => reject(parseError(error))
+      navigator.geolocation.getCurrentPosition(({ coords }) =>
+        resolve(coords), error => reject(parsePositionError(error))
       )
-      const parseError = error => {
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            return {
-              code: 0,
-              message: 'User denied the request for geolocation.'
-            }
-          case error.POSITION_UNAVAILABLE:
-            return {
-              code: 1,
-              message: 'Location information is unavailable.'
-            }
-          case error.TIMEOUT:
-            return {
-              code: 2,
-              message: 'The request to get user location timed out.'
-            }
-          case error.UNKNOWN_ERROR:
-            return {
-              code: 3,
-              message: 'An unknown error occurred.'
-            }
-        }
-      }
-    } else {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      reject({
-        code: 3,
-        message: 'An unknown error occurred.'
-      })
     }
   })
 }
@@ -52,10 +44,21 @@ const getUserGeoDataFromDevice = () => {
  * Fetch user geo data
  * @return {object} user geo data
  */
-const fetchUserGeoData = async () => {
-  const data = await getUserGeoDataFromDevice()
-  setUserGeoDataToStorage(data)
-  return data
+const fetchUserGeoData = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await getUserGeoDataFromDevice()
+      data = {
+        lat: data.latitude,
+        long: data.longitude
+      }
+      setUserGeoDataToStorage(data)
+      resolve(data)
+    } catch (error) {
+      // eslint-disable-next-line prefer-promise-reject-errors
+      reject(error)
+    }
+  })
 }
 
 /**
