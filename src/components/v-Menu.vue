@@ -106,7 +106,6 @@ export default {
   position: fixed;
   bottom: 0;
   background-repeat: no-repeat;
-  background-image: url(/img/img-growler-white.svg);
   left: -130px;
   opacity: 0.6;
 }
