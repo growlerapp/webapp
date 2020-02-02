@@ -1,11 +1,3 @@
 {
-  "extends": [
-    "config:js-app"
-  ],
-  "minor": {
-    "automerge": true
-  },
-  "major": {
-    "automerge": false
-  }
+  "enabled": false
 }
